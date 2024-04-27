@@ -1,0 +1,149 @@
+//= partials/head.html
+
+<div class="wrap">
+  //= partials/header.html
+
+  <div class="wrap__main">
+    <section class="login">
+      <div class="login__block">
+        <form action="" class="login__form login__signin">
+          <input type="hidden" name="action" value="login" >
+          <h2 class="login__title">Sign up</h2>
+          <div class="login__input">
+            <label for="email-sign"> Email</label>
+            <input type="text" name="email" id="email-sign" placeholder="Start typing..." >
+          </div>
+          <div class="login__input">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Start typing...">
+          </div>
+          <p class="login__text login__forget">
+            <span>Forgot password?</span>
+          </p>
+          <button class="login__button section__button">Log In</button>
+
+          <p class="login__text login__registration-button">
+            Don't have account? <button type="button">Registration</button>
+          </p>
+        </form>
+        <form action="" class="login__form login__registration">
+          <input type="hidden" name="action" value="registration" >
+          <h2 class="login__title">Registration</h2>
+
+          <div class="tab__header">
+            <button class="tab__header-item active">Customer</button>
+            <button class="tab__header-item">Company</button>
+          </div>
+          <div class="tab__content">
+            <div class="tab__content-item">
+              <div class="login__form-flex">
+                  <div class="login__input">
+                    <label for="name">First name</label>
+                    <input type="text" name="name" id="name" placeholder="Start typing..." >
+                  </div>
+                  <div class="login__input">
+                    <label for="lastname">Last name</label>
+                    <input type="text" name="lastname" id="lastname" placeholder="Start typing..." >
+                  </div>
+                  <div class="login__input">
+                    <label for="email-reg"> Email</label>
+                    <input type="text" name="email" id="email-reg" placeholder="Start typing..." >
+                  </div>
+                  <div class="login__input">
+                    <label for="phone">Phone</label>
+                    <input type="password" name="phone" id="phone" placeholder="Start typing...">
+                  </div>
+                  <label class="checkbox" for="accept">
+                    <input type="checkbox" name="accept" checked  id="accept">
+                    <span class="checkmark"></span>
+                    <p>I accepts the tellus <a href="">terms</a> and <a href="">conditions</a></p>
+                  </label>
+                  <button class="login__button section__button">Log In</button>
+                  <p class="login__text login__sign">
+                    Don't have an account? <button type="button">Sign Up</button>
+                  </p>
+              </div>
+            </div>
+            <div class="tab__content-item">
+              <div class="login__form-flex">
+                <div class="login__input">
+                  <label for="company-name">First name</label>
+                  <input type="text" name="company-name" id="company-name" placeholder="Start typing..." >
+                </div>
+                <div class="login__input">
+                  <label for="email-reg2"> Email</label>
+                  <input type="text" name="email" id="email-reg2" placeholder="Start typing..." >
+                </div>
+                <div class="login__input">
+                  <label for="country">Country</label>
+                  <input type="text" name="country" id="country" placeholder="Start typing..." >
+                </div>
+                <div class="login__input">
+                  <label for="city">City</label>
+                  <input type="text" name="city" id="city" placeholder="Start typing..." >
+                </div>
+                <div class="login__input">
+                  <label for="zip">Zip</label>
+                  <input type="text" name="zip" id="zip" placeholder="Start typing...">
+                </div>
+                <div class="login__input">
+                  <label for="street">Street</label>
+                  <input type="password" name="street" id="street" placeholder="Start typing...">
+                </div>
+                <div class="login__input">
+                  <label for="vat">VAT ID</label>
+                  <input type="password" name="vat" id="vat" placeholder="Start typing...">
+                </div>
+                <label class="checkbox" for="accept2">
+                  <input type="checkbox" name="accept" checked  id="accept2">
+                  <span class="checkmark"></span>
+                  <p>I accepts the tellus <a href="">terms</a> and <a href="">conditions</a></p>
+                </label>
+                <button class="login__button section__button">Sign up</button>
+                <p class="login__text login__sign">
+                  Don't have an account? <button type="button">Sign Up</button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <form action="" class="login__form login__form-forget">
+          <input type="hidden" name="action" value="password_forget" >
+          <h2 class="login__title">Password Recovery</h2>
+          <div class="login__input">
+            <label for="email-forget">Email</label>
+            <input type="text" name="email" id="email-forget" placeholder="Start typing..." >
+          </div>
+
+          <button class="login__button section__button">Next</button>
+          <p class="login__text login__remember"><span>Go back</span></p>
+        </form>
+        <div class="login__form login__form-success">
+          <h2 class="login__title">Check Your Email</h2>
+          <p class="login__text"> We have send a reset password to your email address</p>
+          <button type="button" class="login__button section__button login__remember">Go Back</button>
+        </div>
+        <form action="" class=" login__form login__form-recovery">
+          <input type="hidden" name="action" value="password_set_new" >
+          <h2 class="login__title">Password Recovery</h2>
+          <div class="login__input">
+            <label for="passwordNew">Enter New Password</label>
+            <input type="password" name="passwordNew" id="passwordNew" placeholder="Start typing..." >
+          </div>
+          <div class="login__input">
+            <label for="passwordNewRepeat">Repeat New Password</label>
+            <input type="password" name="passwordNewRepeat" id="passwordNewRepeat"  placeholder="Start typing..." >
+          </div>
+          <button class="login__button section__button">Next</button>
+        </form>
+
+      </div>
+    </section>
+  </div>
+</div>
+
+//= partials/scripts.html
+
+</body>
+</html>

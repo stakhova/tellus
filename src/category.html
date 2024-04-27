@@ -1,0 +1,403 @@
+//= partials/head.html
+
+<div class="wrap">
+  //= partials/header.html
+
+  <div class="wrap__main">
+    <section class="category">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="#">Main page</a>
+          <a href="#">All Products</a>
+        </div>
+        <div class="category__header">
+          <h2 class="section__title">
+            All Products
+          </h2>
+          <div class="category__view">
+            <button class="category__view-gallery img active" >
+              <img src="./img/view-gal.svg" alt="">
+            </button>
+            <button class="category__view-list img" >
+              <img src="./img/view-list.svg" alt="">
+            </button>
+          </div>
+
+ 
+
+        </div>
+        <form action="" class="category__form">
+          <input type="hidden" name="action" value="show_product" >
+          <input type="hidden" name="category" value="all">
+          <div class="category__mob">
+            <button type="button" class="category__mob-button">
+              <img src="./img/filter-mob.svg" alt="">
+              <span>Filter</span>
+            </button>
+          </div>
+          <div class="category__cat">
+            <button type="button" class="active">All</button>
+            <button type="button">Switches</button>
+            <button type="button">Routers</button>
+            <button type="button">Transceivers</button>
+          </div>
+          <div class="category__select-wrap" >
+            <select class="category__select" name="condition[]" multiple="multiple">
+              <option value="" disabled selected>Select condition...</option>
+              <option value="new">new</option>
+              <option value="was in use">was in use</option>
+            </select>
+            <select class="category__select" name="number-of-ports[]" multiple="multiple">
+              <option value="test1">test1</option>
+              <option value="test2">test2</option>
+              <option value="test3">test3</option>
+              <option value="test4">test4</option>
+            </select>
+            <select class="category__select" name="license[]" multiple="multiple">
+              <option value="license1">license1</option>
+              <option value="license2">license2</option>
+              <option value="license3">license3</option>
+              <option value="license4">license4</option>
+            </select>
+            <select class="category__select" name="port-speed[]" multiple="multiple">
+              <option value="speed1">speed1</option>
+              <option value="speed2">speed2</option>
+              <option value="speed3">speed3</option>
+              <option value="speed4">speed4</option>
+            </select>
+            <select class="category__select" name="name[]" multiple="multiple">
+              <option value="name1">name1</option>
+              <option value="name2">name2</option>
+              <option value="name3">name3</option>
+              <option value="name4">name4</option>
+            </select>
+            <select class="category__select" name="sort_by">
+              <option value="Low to high">Low to high </option>
+              <option value="High to low">High to low</option>
+              <option value="Popular">Popular</option>
+            </select>
+          </div>
+          <div class="category__select-mob">
+            <div class="category__select-header">
+                <h2 class="category__select-title">Filter</h2>
+                <button type="button" class="section__button">Show(12)</button>
+            </div>
+            <div class="category__filter-item">
+              <input type="hidden" name="condition">
+              <h3 class="category__filter-title">Condition</h3>
+              <div class="category__filter-option">
+                <span>New</span>
+                <span>Was in use</span>
+              </div>
+            </div>
+            <div class="category__filter-item">
+              <input type="hidden" name="number-of-ports">
+              <h3 class="category__filter-title">Number of Ports</h3>
+              <div class="category__filter-option">
+                <span>test</span>
+                <span>test</span>
+                <span>test</span>
+                <span>test</span>
+                <span>test</span>
+                <span>test</span>
+              </div>
+            </div>
+            <div class="category__filter-item">
+              <input type="hidden" name="license">
+              <h3 class="category__filter-title">License</h3>
+              <div class="category__filter-option">
+                <span>test</span>
+                <span>test</span>
+                <span>test</span>
+              </div>
+            </div>
+            <div class="category__filter-item">
+              <input type="hidden" name="port-speed">
+              <h3 class="category__filter-title">Port Speed</h3>
+              <div class="category__filter-option">
+                <span>test</span>
+                <span>test</span>
+                <span>test</span>
+              </div>
+            </div>
+            <div class="category__filter-item">
+              <h3 class="category__filter-title">Price</h3>
+              <div class="category__filter-option category__filter-price">
+                <div class="category__price"> <p>FROM</p> <div class="category__price-input"><input type="number" name="price-from" value="0"> $</div></div>
+                <div class="category__price"><p> TO</p> <div class="category__price-input"><input type="number" name="price-to" value="1000"> $</div></div>
+              </div>
+            </div>
+            <div class="category__filter-item">
+              <input type="hidden" name="name">
+              <h3 class="category__filter-title">Name</h3>
+              <div class="category__filter-option">
+                <span>test</span>
+                <span>test</span>
+                <span>test</span>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="category__block">
+            <ul class="category__list ">
+              <li class="card__item ">
+                <div class="card__img img">
+                  <div class="card__tag">
+                    <span>arista</span>
+                  </div>
+                  <div class="card__icon">
+                    <div class="card__icon-item complete"></div>
+                    <button class="card__icon-item like"></button>
+                  </div>
+                  <img src="./img/prod2.png" alt="">
+                </div>
+                <div class="card__flex">
+                  <div class="card__desc">
+                    <h3 class="card__title">Dell N4064F</h3>
+                    <p class="card__info">48-Port 1000-BASE-T | 4x 10G SFP+ | dual PSU | Rack-Ears [...]</p>
+                    <div class="card__variants">
+                      <div>Item variants</div>
+                      <div>Item variants</div>
+                      <div>Item variants</div>
+                    </div>
+                  </div>
+                  <div class="card__bottom">
+                    <h3 class="card__price">EUR 749,00</h3>
+                    <div class="card__buy">
+                      <div class="card__buy-icon"></div>
+                      <div class="card__buy-button section__button">Buy it now</div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="card__item ">
+                <div class="card__img img">
+                  <div class="card__tag">
+                    <span>arista</span>
+                  </div>
+                  <div class="card__icon">
+                    <div class="card__icon-item pencil"></div>
+                    <button class="card__icon-item like"></button>
+                  </div>
+                  <img src="./img/prod2.png" alt="">
+                </div>
+                <div class="card__flex">
+                  <div class="card__desc">
+                    <h3 class="card__title">Dell N4064F</h3>
+                    <p class="card__info">48-Port 1000-BASE-T | 4x 10G SFP+ | dual PSU | Rack-Ears [...]</p>
+                    <div class="card__variants">
+                      <div>Item variants</div>
+                    </div>
+                  </div>
+                  <div class="card__bottom">
+                    <h3 class="card__price">EUR 749,00</h3>
+                    <div class="card__buy">
+                      <div class="card__buy-icon"></div>
+                      <div class="card__buy-button section__button">Buy it now</div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="card__item ">
+                <div class="card__img img">
+                  <div class="card__tag">
+                    <span>arista</span>
+                  </div>
+                  <div class="card__icon">
+                    <div class="card__icon-item complete"></div>
+                    <button class="card__icon-item like"></button>
+                  </div>
+                  <img src="./img/prod2.png" alt="">
+                </div>
+                <div class="card__flex">
+                  <div class="card__desc">
+                    <h3 class="card__title">Dell N4064F</h3>
+                    <p class="card__info">48-Port 1000-BASE-T | 4x 10G SFP+ | dual PSU | Rack-Ears [...]</p>
+                    <div class="card__variants">
+                      <div>Item variants</div>
+                      <div>Item variants</div>
+                      <div>Item variants</div>
+                    </div>
+                  </div>
+                  <div class="card__bottom">
+                    <h3 class="card__price">EUR 749,00</h3>
+                    <div class="card__buy">
+                      <div class="card__buy-icon"></div>
+                      <div class="card__buy-button section__button">Buy it now</div>
+                    </div>
+                  </div>
+                </div>
+
+              </li>
+              <li class="card__item ">
+
+                <div class="card__img img">
+                  <div class="card__tag">
+                    <span>arista</span>
+                  </div>
+                  <div class="card__icon">
+                    <div class="card__icon-item pencil"></div>
+                    <button class="card__icon-item like"></button>
+                  </div>
+                  <img src="./img/prod2.png" alt="">
+                </div>
+                <div class="card__flex">
+                  <div class="card__desc">
+                    <h3 class="card__title">Dell N4064F</h3>
+                    <p class="card__info">48-Port 1000-BASE-T | 4x 10G SFP+ | dual PSU | Rack-Ears [...]</p>
+                    <div class="card__variants">
+                      <div>Item variants</div>
+
+                    </div>
+                  </div>
+                  <div class="card__bottom">
+                    <h3 class="card__price">EUR 749,00</h3>
+                    <div class="card__buy">
+                      <div class="card__buy-icon"></div>
+                      <div class="card__buy-button section__button">Buy it now</div>
+                    </div>
+                  </div>
+                </div>
+
+              </li>
+              <li class="card__item ">
+
+                <div class="card__img img">
+                  <div class="card__tag">
+                    <span>arista</span>
+                  </div>
+                  <div class="card__icon">
+                    <div class="card__icon-item complete"></div>
+                    <button class="card__icon-item like"></button>
+                  </div>
+                  <img src="./img/prod2.png" alt="">
+                </div>
+                <div class="card__flex">
+                  <div class="card__desc">
+                    <h3 class="card__title">Dell N4064F</h3>
+                    <p class="card__info">48-Port 1000-BASE-T | 4x 10G SFP+ | dual PSU | Rack-Ears [...]</p>
+                    <div class="card__variants">
+                      <div>Item variants</div>
+                      <div>Item variants</div>
+                      <div>Item variants</div>
+                    </div>
+                  </div>
+                  <div class="card__bottom">
+                    <h3 class="card__price">EUR 749,00</h3>
+                    <div class="card__buy">
+                      <div class="card__buy-icon"></div>
+                      <div class="card__buy-button section__button">Buy it now</div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="card__item ">
+                <div class="card__img img">
+                  <div class="card__tag">
+                    <span>arista</span>
+                  </div>
+                  <div class="card__icon">
+                    <div class="card__icon-item pencil"></div>
+                    <button class="card__icon-item like"></button>
+                  </div>
+                  <img src="./img/prod2.png" alt="">
+                </div>
+                <div class="card__flex">
+                  <div class="card__desc">
+                    <h3 class="card__title">Dell N4064F</h3>
+                    <p class="card__info">48-Port 1000-BASE-T | 4x 10G SFP+ | dual PSU | Rack-Ears [...]</p>
+                    <div class="card__variants">
+                      <div>Item variants</div>
+                    </div>
+                  </div>
+                  <div class="card__bottom">
+                    <h3 class="card__price">EUR 749,00</h3>
+                    <div class="card__buy">
+                      <div class="card__buy-icon"></div>
+                      <div class="card__buy-button section__button">Buy it now</div>
+                    </div>
+                  </div>
+                </div>
+
+              </li>
+              <li class="card__item ">
+
+                <div class="card__img img">
+                  <div class="card__tag">
+                    <span>arista</span>
+                  </div>
+                  <div class="card__icon">
+                    <div class="card__icon-item complete"></div>
+                    <button class="card__icon-item like"></button>
+                  </div>
+                  <img src="./img/prod2.png" alt="">
+                </div>
+                <div class="card__flex">
+                  <div class="card__desc">
+                    <h3 class="card__title">Dell N4064F</h3>
+                    <p class="card__info">48-Port 1000-BASE-T | 4x 10G SFP+ | dual PSU | Rack-Ears [...]</p>
+                    <div class="card__variants">
+                      <div>Item variants</div>
+                      <div>Item variants</div>
+                      <div>Item variants</div>
+                    </div>
+                  </div>
+                  <div class="card__bottom">
+                    <h3 class="card__price">EUR 749,00</h3>
+                    <div class="card__buy">
+                      <div class="card__buy-icon"></div>
+                      <div class="card__buy-button section__button">Buy it now</div>
+                    </div>
+                  </div>
+                </div>
+
+              </li>
+              <li class="card__item ">
+                <div class="card__img img">
+                  <div class="card__tag">
+                    <span>arista</span>
+                  </div>
+                  <div class="card__icon">
+                    <div class="card__icon-item pencil"></div>
+                    <button class="card__icon-item like"></button>
+                  </div>
+                  <img src="./img/prod2.png" alt="">
+                </div>
+                <div class="card__flex">
+                  <div class="card__desc">
+                    <h3 class="card__title">Dell N4064F</h3>
+                    <p class="card__info">48-Port 1000-BASE-T | 4x 10G SFP+ | dual PSU | Rack-Ears [...]</p>
+                    <div class="card__variants">
+                      <div>Item variants</div>
+
+                    </div>
+                  </div>
+                  <div class="card__bottom">
+                    <h3 class="card__price">EUR 749,00</h3>
+                    <div class="card__buy">
+                      <div class="card__buy-icon"></div>
+                      <div class="card__buy-button section__button">Buy it now</div>
+                    </div>
+                  </div>
+                </div>
+
+              </li>
+              <li class="card__item-more ">
+
+                <div class="section__view more">View more</div>
+
+              </li>
+            </ul>
+
+
+        </div>
+      </div>
+    </section>
+  </div>
+  //= partials/footer.html
+</div>
+
+//= partials/scripts.html
+
+</body>
+</html>

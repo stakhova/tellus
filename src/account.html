@@ -1,0 +1,218 @@
+//= partials/head.html
+
+<div class="wrap">
+    //= partials/header.html
+
+    <div class="wrap__main">
+        <section class="account">
+            <div class="container">
+
+
+                <div class="breadcrumbs">
+                    <a href="#">Main page</a>
+                    <a href="#">All Products</a>
+                </div>
+                <h2 class="section__title">
+                    Account
+                </h2>
+                <div class="account__block">
+                    <div class="tab__header">
+                        <button class="tab__header-item active">Personal data</button>
+                        <button class="tab__header-item">Change password</button>
+                        <button class="tab__header-item">Manage addresses</button>
+                        <button class="tab__header-item">Order history</button>
+                        <button class="tab__header-item">Invoices</button>
+                    </div>
+                    <div class="tab__content">
+                        <div class="tab__content-item">
+                            <form action="" class="login__form login__form-flex login__edit">
+                                <input type="hidden" name="action" value="edit_data_user" >
+                                   <div class="login__input">
+                                       <label for="name">First name</label>
+                                       <input type="text" name="name" id="name" value="Ivan" >
+                                     </div>
+                                     <div class="login__input">
+                                        <label for="lastname">Last name</label>
+                                        <input type="text" name="lastname" id="lastname" value="Ivanov" >
+                                     </div>
+                                     <div class="login__input">
+                                        <label for="email-reg"> Email</label>
+                                        <input type="text" name="email" id="email-reg" value="ivan12345@gmail.com" >
+                                     </div>
+                                    <button class="login__button section__button">Edit</button>
+                            </form>
+                        </div>
+                        <div class="tab__content-item">
+                            <form action="" class="login__form login__form-flex login__change-password">
+                                <input type="hidden" name="action" value="change_password" >
+                                <div class="login__input">
+                                    <label for="passwordOld">Old password</label>
+                                    <input type="password" name="passwordOld" id="passwordOld" placeholder="Start typing..." >
+                                </div>
+                                <div class="login__input">
+                                    <label for="passwordNew">New Password</label>
+                                    <input type="password" name="passwordNew" id="passwordNew" placeholder="Start typing..." >
+                                </div>
+                                <div class="login__input">
+                                    <label for="passwordNewRepeat">Repeat New Password</label>
+                                    <input type="password" name="passwordNewRepeat" id="passwordNewRepeat"  placeholder="Start typing..." >
+                                </div>
+                                <button class="login__button-change login__button section__button">Edit</button>
+                            </form>
+                        </div>
+                        <div class="tab__content-item">
+                            3
+                        </div>
+                        <div class="tab__content-item">
+                            <div class="history">
+                                <div class="history__table">
+
+                                    <div class="history__row history__header">
+                                        <span>Order</span>
+                                        <span>Date</span>
+                                        <span>Status</span>
+                                        <span>Items</span>
+                                        <span>Total</span>
+                                        <span></span>
+                                    </div>
+                                    <div class="history__wrap">
+                                        <div class="history__row">
+                                            <span>123456</span>
+                                            <span>11/12/2024</span>
+                                            <div><span class="history__status completed ">Completed</span></div>
+                                            <span>4</span>
+                                            <span>259$</span>
+                                            <button class="history__show"></button>
+                                        </div>
+                                        <div class="history__desc ">
+                                            <div class="history__desc-item">
+                                                <span class="history__desc-count">1</span>
+                                                <div class="history__desc-img img">
+                                                    <img src="./img/img1.png" alt="">
+                                                </div>
+                                                <div class="history__desc-info">
+                                                    <h3 class="history__desc-title">Arista DCS-7010T-48</h3>
+                                                    <h4 class="history__desc-subtitle">48-Port 1000-BASE-T | 4x 10G SFP+ | dual PSU | Rack-Ears [...]</h4>
+                                                    <a href="" class="history__desc-link">More Details</a>
+                                                </div>
+                                                <span>259$</span>
+                                                <button class="section__button">Claim</button>
+                                            </div>
+                                            <div class="history__desc-item">
+                                                <span class="history__desc-count">2</span>
+                                                <div class="history__desc-img img">
+                                                    <img src="./img/img1.png" alt="">
+                                                </div>
+                                                <div class="history__desc-info">
+                                                    <h3 class="history__desc-title">Arista DCS-7010T-48</h3>
+                                                    <h4 class="history__desc-subtitle">48-Port 1000-BASE-T | 4x 10G SFP+ | dual PSU | Rack-Ears [...]</h4>
+                                                    <a href="" class="history__desc-link">More Details</a>
+                                                </div>
+                                                <span>259$</span>
+                                                <button class="section__button">Claim</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="history__wrap">
+                                        <div class="history__row">
+                                            <span>123456</span>
+                                            <span>11/12/2024</span>
+                                            <div><span class="history__status completed ">Completed</span></div>
+                                            <span>4</span>
+                                            <span>259$</span>
+                                            <button class="history__show"></button>
+                                        </div>
+                                        <div class="history__desc ">
+                                            <div class="history__desc-item">
+                                                <span class="history__desc-count">1</span>
+                                                <div class="history__desc-img img">
+                                                    <img src="./img/img1.png" alt="">
+                                                </div>
+                                                <div class="history__desc-info">
+                                                    <h3 class="history__desc-title">Arista DCS-7010T-48</h3>
+                                                    <h4 class="history__desc-subtitle">48-Port 1000-BASE-T | 4x 10G SFP+ | dual PSU | Rack-Ears [...]</h4>
+                                                    <a href="" class="history__desc-link">More Details</a>
+                                                </div>
+                                                <span>259$</span>
+                                                <button class="section__button">Claim</button>
+                                            </div>
+                                            <div class="history__desc-item">
+                                                <span class="history__desc-count">2</span>
+                                                <div class="history__desc-img img">
+                                                    <img src="./img/img1.png" alt="">
+                                                </div>
+                                                <div class="history__desc-info">
+                                                    <h3 class="history__desc-title">Arista DCS-7010T-48</h3>
+                                                    <h4 class="history__desc-subtitle">48-Port 1000-BASE-T | 4x 10G SFP+ | dual PSU | Rack-Ears [...]</h4>
+                                                    <a href="" class="history__desc-link">More Details</a>
+                                                </div>
+                                                <span>259$</span>
+                                                <button class="section__button">Claim</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab__content-item">
+                            <button class="account__invite-button">Invite users</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="modal modal__change">
+            <div class="modal__wrap">
+                <div class="modal__content ">
+                    <div class="modal__close img">
+                        <img src="./img/close.svg" alt="">
+                    </div>
+                    <div class="modal__overflow">
+                        <div class="modal__icon img">
+                            <img src="./img/tick.svg" alt="">
+                        </div>
+                        <h3 class="modal__subtitle">
+                            Your password has been successfully changed
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <div class="modal modal__invite">
+            <div class="modal__wrap">
+                <div class="modal__content ">
+                    <div class="modal__close img">
+                        <img src="./img/close.svg" alt="">
+                    </div>
+                    <div class="modal__overflow">
+                        <h3 class="modal__subtitle">
+                            Share this company
+                        </h3>
+                        <div class="login__input">
+                            <label for="invite">Invite link</label>
+                            <input type="text" name="invite" id="invite" value="http://www.tellus.com/team_invite/name_of_company/LS1"   >
+                            <button class="section__button login__input-btn">Copy link</button>
+                        </div>
+                        <form action="">
+                            <div class="login__input">
+                                <input type="hidden" name="action" value="invite-by-email" >
+                                <label for="inviteEmail">Invite by email</label>
+                                <input type="text" name="email" id="inviteEmail" placeholder="Add email">
+                                <button class=" section__button login__input-btn disabled" >Invite</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    //= partials/footer.html
+</div>
+
+//= partials/scripts.html
+
+</body>
+</html>
