@@ -1,69 +1,13 @@
-let mySwiper;
-function initSliderIndex() {
-    $('.index .index__slider').each(function(index, element) {
-        let slider = new Swiper(element, {
-            slidesPerView: 1.75,
-            spaceBetween: 12,
-            loop: true,
-        });
-    });
-}
-function initProductSlider(){
-    $('.product__related .index__slider').each(function(index, element) {
-        let slider = new Swiper(element, {
-            slidesPerView: 4,
-            spaceBetween: 30,
-            loop: true,
-            breakpoints: {
-                0: {
-                    slidesPerView: 1.8,
-                    spaceBetween: 12,
-                },
-                666: {
-                    slidesPerView: 4,
-                    spaceBetween: 30,
-                },
-            }
-        });
-    });
-    const sliderProductThumbnail = new Swiper('.product__slider-thumbnail', {
-        slidesPerView: 8,
-        freeMode: true,
-        spaceBetween:10,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
-        breakpoints: {
-            0: {
-                slidesPerView: 4,
-                spaceBetween: 16
-            },
-            1024: {
-                slidesPerView: 4
-            },
-            1440: {
-                slidesPerView: 7
-            }
-
-        }
-
-    });
-
-
-    const sliderProduct = new Swiper('.product__slider', {
-        pagination: {
-            el: '.product__pagination',
-            clickable: true
-        },
-        navigation: {
-            nextEl: '.product__next',
-            prevEl: '.product__prev',
-        },
-        thumbs: {
-            swiper: sliderProductThumbnail
-        }
-    });
-}
-
+const openMenu = () => {
+    $('.header__burger').toggleClass("header__burger-open");
+    $('.header__menu').toggleClass('header__menu-show');
+    $('body').toggleClass('hidden');
+    $(document).on('click','.header__menu-close', function (){
+        $('.header__burger').removeClass("header__burger-open");
+        $('.header__menu').removeClass('header__menu-show');
+        ('body').removeClass('hidden');
+    })
+};
 function addToFavorite(){
     $(document).on('click', '.like', function (){
         $(this).toggleClass('active')
@@ -89,52 +33,8 @@ function addToFavorite(){
     })
 }
 
-
-
-
-function loginFormChange(){
-    $(document).on('click','.login__forget', function (){
-        $(this).closest('.login__form').removeClass('active');
-        $('.login__form-forget').addClass('active')
-    })
-    $(document).on('click','.login__remember', function (){
-        $(this).closest('.login__form').removeClass('active');
-        $('.login__signin').addClass('active')
-    })
-    $(document).on('click','.login__registration-button button', function (){
-        $(this).closest('.login__form').removeClass('active');
-        $('.login__registration').addClass('active')
-    })
-    $(document).on('click','.login__sign button', function (){
-        $(this).closest('.login__form').removeClass('active');
-        $('.login__signin').addClass('active')
-    })
-    if(window.location.href.includes('set_new_password')){
-        $('.login__form').removeClass('active')
-        $('.login__form-recovery').addClass('active')
-    } else{
-        $('.login__signin').addClass('active')
-    }
-}
-
-function addActiveFilter(){
-    $(document).on('click','.category__filter-option span',function (){
-        // let isActive = $(this).hasClass('active');
-
-        $(this).toggleClass('active');
-
-        let selectedValues = [];
-        $(this).closest('.category__filter-item').find('.category__filter-option span.active').each(function() {
-            selectedValues.push($(this).text());
-        });
-        $(this).closest('.category__filter-item').find('input[type="hidden"]').val(selectedValues.join(', '));
-    })
-}
-
-
 function changeMob() {
     if(window.innerWidth <= 666){
-        initSliderIndex()
         $('.category__mob').append($('.category__select[name="sort_by"]'))
     }
 }
@@ -237,9 +137,10 @@ function ajaxSend(form, funcSuccess,funcError ) {
 }
 
 
+
 let button
 function addClassActive(btn, func){
-    $(document).on('click', btn , function (){
+    $(document).on('click', btn, function (){
         button = $(this)
         button.addClass('active')
         button.nextAll().removeClass('active')
@@ -252,12 +153,6 @@ function addClassActive(btn, func){
 
 function resetModal(){
 }
-
-
-
-
-
-
 
 function toggleModal(btn, modal) {
     btn.click(function () {
@@ -295,9 +190,6 @@ function toggleModal(btn, modal) {
     });
 }
 
-
-
-
 let page = 1;
 function loadMore(action, btn){
     $(document).on('click',btn, function (){
@@ -332,86 +224,38 @@ function loadMore(action, btn){
 
 
 
+// function search(){
+//     let data = $('.project__search').serialize();
+//     let searchText = $('.project__search-input input').val();
+//     if (searchText.length < 1){
+//         $('.project__search-result').hide()
+//     } else{
+//         $('.project__search-result').show(300)
+//     }
+//     $.ajax({
+//         url: '/wp-admin/admin-ajax.php',
+//         data: data,
+//         method: 'POST',
+//         success: function (res) {
+//             console.log('success ajax');
+//             $('.project__search-list').html(res);
+//         },
+//         error: function (error) {
+//             console.log('error ajax');
+//         },
+//         complete: function (){
+//
+//         }
+//     });
+// }
 
 
 
-function search(){
-    let data = $('.project__search').serialize();
-    let searchText = $('.project__search-input input').val();
-    if (searchText.length < 1){
-        $('.project__search-result').hide()
-    } else{
-        $('.project__search-result').show(300)
-    }
-    $.ajax({
-        url: '/wp-admin/admin-ajax.php',
-        data: data,
-        method: 'POST',
-        success: function (res) {
-            console.log('success ajax');
-            $('.project__search-list').html(res);
-        },
-        error: function (error) {
-            console.log('error ajax');
-        },
-        complete: function (){
-
-        }
-    });
-}
 
 
 
 
-const openMenu = () => {
-    $('.header__burger').toggleClass("header__burger-open");
-    $('.header__menu').toggleClass('header__menu-show');
-    $('body').toggleClass('hidden');
-    $(document).on('click','.header__menu-close', function (){
-        $('.header__burger').removeClass("header__burger-open");
-        $('.header__menu').removeClass('header__menu-show');
-        ('body').removeClass('hidden');
-    })
-};
 
-function openFilter()  {
-    $(document).on('click', '.category__mob-button', function (){
-        $('.category__select-mob').addClass("active");
-        $('body').addClass('hidden');
-        $('.category__filter-close-wrap').show()
-    })
-    $(document).on('click','.category__filter-close-wrap', function (){
-        $('.category__select-mob').removeClass("active");
-        $('body').removeClass('hidden');
-        $(this).hide()
-    })
-    $(document).on('click','.category__select-header .section__button', function (){
-        $('.category__select-mob').removeClass("active");
-        $('body').removeClass('hidden');
-        $('.category__filter-close-wrap').hide()
-    })
-};
-
-
-
-function filter(){
-    if(window.innerWidth <= 666){
-        $('.category__select-wrap .category__select').each(function (){
-            $(this).attr('disabled','disabled')
-        })
-    }else{
-        $('.category__select-mob input').each(function (){
-            $(this).attr('disabled','disabled')
-        })
-    }
-    $(document).on('click', '.category__filter-option span, .category__cat button ', function (){
-        ajaxSend($('.category__form'))
-    })
-    $(document).on('change', '.category__select, .category__form input', function (){
-        ajaxSend($('.category__form'))
-    })
-
-}
 
 
 
@@ -423,22 +267,38 @@ function tab() {
 }
 
 
+function showPassword() {
+    $('.login__input-eye').click(function (e) {
+        $(this).toggleClass('active');
+        $(this).hasClass('active') ? $(this).closest('.login__input').find('input').attr('type', 'text') : $(this).closest('.login__input').find('input').attr('type', 'password');
+    });
+}
+
 
 function showHint(modal) {
     modal.show();
     setTimeout(function (){
         modal.hide();
     }, 3000)
-}
+    $(document).keydown(function (e) {
+        if (e.keyCode === 27) {
+            e.stopPropagation();
+            resetModal()
+            $('body').css('overflow', 'visible');
+        }
 
-
-function showHistory(){
-    $('.history__show').click(function() {
-        $(this).closest('.history__row').toggleClass('active')
-        console.log(4444, $(this).closest('.history__row'))
-        $(this).closest('.history__row').next('.history__desc').toggleClass('active');
+    });
+    modal.click(function (e) {
+        if ($(e.target).closest('.modal__content').length == 0) {
+            $(this).hide();
+            resetModal()
+            $('body').css('overflow', 'visible');
+        }
     });
 }
+
+
+
 
 $(document).ready(function(){
 
@@ -492,31 +352,19 @@ $(document).ready(function(){
 
 
 
-    openFilter()
-    showHistory()
-    tab();
+
+
+
     $('.header__burger').on('click', openMenu);
     loadMore('more_project', '.project__wrap .load__more')
     loadMore('more_notification', '.notification__wrap .load__more')
-    addClassActive('.category__cat button', function (){
-        let category = button.text()
-        $('input[name="category"]').val(category)
-    })
-    addClassActive('.category__view button', function (){
-            if(button.hasClass('category__view-list')){
-                $('.category__list').addClass('list')
-            }else {
-                $('.category__list').removeClass('list')
-            }
-    })
-    $('.category__select').select2();
-    addActiveFilter()
-    loginFormChange()
-    filter()
-    initProductSlider()
+
+
+
+
+    tab();
     addToFavorite()
-
-
+    showPassword()
 });
 
 $(window).load(function(){

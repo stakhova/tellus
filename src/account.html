@@ -22,6 +22,7 @@
                         <button class="tab__header-item">Manage addresses</button>
                         <button class="tab__header-item">Order history</button>
                         <button class="tab__header-item">Invoices</button>
+                        <button class="tab__header-item">Add/View Company Contacts</button>
                     </div>
                     <div class="tab__content">
                         <div class="tab__content-item">
@@ -155,6 +156,17 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="history__empty">
+                                <div class="history__empty-icon img">
+                                    <img src="./img/empty.svg" alt="">
+                                </div>
+                                <h3 class="history__empty-title">
+                                    Your Order history  is empty
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="tab__content-item">
+                            5
                         </div>
                         <div class="tab__content-item">
                             <button class="account__invite-button">Invite users</button>
@@ -180,6 +192,23 @@
                 </div>
             </div>
             </div>
+        <div class="modal modal__invite-copy">
+            <div class="modal__wrap">
+                <div class="modal__content ">
+                    <div class="modal__close img">
+                        <img src="./img/close.svg" alt="">
+                    </div>
+                    <div class="modal__overflow">
+                        <div class="modal__icon img">
+                            <img src="./img/copy.svg" alt="">
+                        </div>
+                        <h3 class="modal__subtitle">
+                            The link has been copied, please send it to your team member so they can join
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="modal modal__invite">
             <div class="modal__wrap">
                 <div class="modal__content ">
@@ -192,15 +221,15 @@
                         </h3>
                         <div class="login__input">
                             <label for="invite">Invite link</label>
-                            <input type="text" name="invite" id="invite" value="http://www.tellus.com/team_invite/name_of_company/LS1"   >
-                            <button class="section__button login__input-btn">Copy link</button>
+                            <p id="invite">http://www.tellus.com/team_invite/name_of_company/LS1</p>
+                            <button class="section__button login__input-btn" id="invite__button">Copy link</button>
                         </div>
-                        <form action="">
+                        <form action="" class="form__invite">
                             <div class="login__input">
                                 <input type="hidden" name="action" value="invite-by-email" >
                                 <label for="inviteEmail">Invite by email</label>
                                 <input type="text" name="email" id="inviteEmail" placeholder="Add email">
-                                <button class=" section__button login__input-btn disabled" >Invite</button>
+                                <button class="section__button login__input-btn disabled" type="button" >Invite</button>
                             </div>
                         </form>
                     </div>
