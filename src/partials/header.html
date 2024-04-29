@@ -21,9 +21,20 @@
                 </div>
             </div>
             <div class="header__button">
-                <a href="" class="header__icon img">
-                    <img src="../img/search.svg" alt="">
-                </a>
+                <div class="header__search-wrap">
+                    <div class="header__search">
+                        <div class="header__icon img">
+                            <img src="../img/search.svg" alt="">
+                        </div>
+                        <form  class="header__search-form">
+                            <input type="hidden" name="action" value="search">
+                            <input type="text" placeholder="Start typing..." name="search__text">
+                            <button type="submit" >Search</button>
+                        </form>
+
+                    </div>
+                </div>
+
                 <a href="" class="header__icon img">
                     <img src="../img/heart.svg" alt="">
                 </a>

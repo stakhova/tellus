@@ -34,6 +34,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap:0.5rem;
   }
   &__logo{
     width: 13.9rem;
@@ -144,6 +145,53 @@
       position: absolute;
       padding-bottom: 5rem;
     }
+  }
+
+  &__search{
+    display: flex;
+    gap:1rem;
+    align-items: center;
+
+    &-wrap{
+      min-width: 2.4rem;
+      position: relative;
+    }
+    &.active{
+      border-radius: 2rem;
+      border: 0.1rem solid #D1D7DE;
+      padding: 0.8rem;
+      width: 20rem;
+      background: #FFF;
+      position: absolute;
+      right: 0;
+      top:50%;
+      transform: translateY(-50%);
+      .header__search-form{
+        display: flex;
+      }
+    }
+    &-form{
+      display: none;
+      gap:1rem;
+      align-items: center;
+      input{
+        width: 9.2rem;
+        border: none;
+        font: 400 1.4rem / normal var(--Ubuntu);
+        &::placeholder{
+          color:#A4B0BE;
+        }
+      }
+      button{
+        display: none;
+        font: 500 1.4rem / normal var(--Ubuntu);
+        color: var(--color-primary);
+        &.active{
+          display: block;
+        }
+      }
+    }
+
   }
 }
 
@@ -275,6 +323,22 @@
 
 
 .section{
+  &__link{
+    font: 700 1.4rem / normal var(--Ubuntu);
+    color: var(--color-primary);
+    padding: 1.4rem 3rem;
+    position: relative;
+    &:after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 1rem;
+      border: 0.1rem solid var(--color-primary);
+    }
+  }
   &__view{
     font: 400 1.4rem / normal var(--Ubuntu);
     position: relative;
@@ -773,9 +837,81 @@ label.error{
     strong{
       font-weight: 700;
     }
+    &-title{
+      margin-bottom: 0.5rem;
+    }
+  }
+  .mailpoet_form{
+    margin-bottom: 1.5rem;
+  }
+  .input-group{
+    display: flex;
+    max-width: 36.6rem;
+    width: 100%;
+    .btn{
+      background-color: #0072B5;
+      position: relative;
+      border-radius: 0.375rem;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      width: 4rem;
+      height: 4rem;
+      &:after{
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 2.3rem;
+        height: 2.3rem;
+        background: url("../img/paper-plane.svg") center/2.3rem 2.3rem no-repeat;
+      }
+    }
+    input{
+      width: 100%;
+      background-color: #00272C;
+      padding: 0.5rem 0.75rem;
+      color: #80A5AA;
+      border: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
   &__info{
 
+  }
+  &__text-center{
+    margin-top: 3rem;
+    font: 400 1.6rem/1.7 var(--Ubuntu);
+    text-align: center;
+  }
+  &__icon{
+    &-wrap{
+      display: flex;
+      gap:1.5rem;
+    }
+    width: 4rem;
+    height: 4rem;
+    background-color: #0072B5;
+    position: relative;
+    border-radius: 0.375rem;
+    display: block;
+    &:after{
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 2.3rem;
+      height: 2.3rem;
+
+    }
+    &:first-child:after{
+      background: url("../img/linkedin.svg") center/2.3rem 2.3rem no-repeat;
+    }
+    &:last-child:after{
+      background: url("../img/x.svg") center/2.3rem 2.3rem no-repeat;
+    }
   }
 }
 
@@ -857,6 +993,19 @@ background-color: transparent;
   .header__menu-list > * {
     font-size: 1.6rem;
   }
+  .header__search.active{
+    width: 15rem;
+  }
+  .header__search-form button{
+    width: 2.4rem;
+    min-width: 2.4rem;
+    height: 2.4rem;
+    position: absolute;
+    top: 50%;
+    left: 0.8rem;
+    transform: translateY(-50%);
+    background: url("../img/search.svg") center/2.4rem 2.4rem no-repeat;
+  }
   .footer__top .container {
     padding: 1.4rem;
 
@@ -908,6 +1057,18 @@ background-color: transparent;
   .login__title {
     font-size: 1.8rem;
   }
+  .footer .container{
+    padding: 3rem 1.4rem;
+  }
+  .footer__block{
+   flex-direction: column;
+    gap: 2.5rem;
+  }
+  .footer__item{
+   width: unset;
+
+  }
+
 }
 
 
