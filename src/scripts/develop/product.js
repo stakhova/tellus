@@ -61,6 +61,19 @@ function initProductSlider(){
     });
 }
 
+function showMoreInfo(){
+    $(document).on('click','.product__specifics-more', function (){
+        let wrap = $(this).closest('.product__specifics')
+        wrap.toggleClass('active')
+        if(wrap.hasClass('active')){
+            $(this).text('Hide')
+        } else{
+            $(this).text('Show all')
+        }
+    })
+}
+
 $(document).ready(function(){
     initProductSlider()
+    showMoreInfo()
 })
