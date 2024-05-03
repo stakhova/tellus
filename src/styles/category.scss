@@ -13,11 +13,10 @@
         color:var(--color-primary);
         font-weight: 500;
         position: relative;
-        padding-bottom: 0.6rem;
         &:before{
           content: '';
           position: absolute;
-          bottom: 0;
+          bottom: -0.6rem;
           left: 0;
           width: 100%;
           height: 0.15rem;
@@ -111,7 +110,10 @@
         font-size: 1.2rem;
       }
     }
-
+    &-wrap{
+      display: flex;
+      gap:1.4rem;
+    }
   }
   &__filter{
     &-item{
@@ -208,10 +210,57 @@
     }
   }
 
+  &__price{
+    &-desc{
+      position: relative;
+    }
+    &-button{
+      color: #000;
+      font: 400 1.2rem / normal var(--Ubuntu);
+      text-transform: uppercase;
+      border-radius: 1rem;
+      background: #F1F2F6;
+      padding: 1rem 3.2rem 1rem 1.4rem;
+      position: relative;
+      &:after{
+        content:'';
+        position: absolute;
+        width: 1.2rem;
+        height: 1.2rem;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+        background: url("../img/down-black.svg") center/1.2rem 1.2rem no-repeat;
+      }
+    }
+    &-toggle{
+      position: absolute;
+      top:4.4rem;
+      border-radius: 2rem;
+      z-index: 3;
+      border: 0.1rem solid #D1D7DE;
+      background: #FFF;
+      display: none;
+      min-width: 20rem;
+      padding: 2rem 1.2rem;
+      &.active{
+        display: flex;
+      }
+    }
+  }
+
 
 }
 
+@media only screen and (max-width: 1280px) {
+  .category__form{
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap:2rem;
+  }
 
+}
 @media only screen and (max-width: 666px) {
 
   .category__select-wrap{
@@ -249,8 +298,8 @@
     flex-direction: column;
   }
   .category__cat{
-    justify-content: space-between;
-    gap:1rem;
+    justify-content: flex-start;
+    gap:4vw;
   }
   .category .container{
     padding: 1rem 1.4rem 2rem;
@@ -278,4 +327,5 @@
       background-color: var(--color-primary);
     }
   }
+
 }

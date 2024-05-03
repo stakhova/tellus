@@ -29,6 +29,7 @@
         <form action="" class="category__form">
           <input type="hidden" name="action" value="show_product" >
           <input type="hidden" name="category" value="all">
+          <input type="hidden" name="page" value="1">
           <div class="category__mob">
             <button type="button" class="category__mob-button">
               <img src="./img/filter-mob.svg" alt="">
@@ -41,37 +42,57 @@
             <button type="button">Routers</button>
             <button type="button">Transceivers</button>
           </div>
-          <div class="category__select-wrap" >
-            <select class="category__select" name="condition[]" multiple="multiple">
-              <option value="" disabled selected>Select condition...</option>
+          <div class="category__select-wrap">
+            <select class="category__select" name="condition" data-placeholder="Condition">
+              <option></option>
+              <option>Not selected</option>
               <option value="new">new</option>
               <option value="was in use">was in use</option>
             </select>
-            <select class="category__select" name="number-of-ports[]" multiple="multiple">
+            <select class="category__select" name="number-of-ports" data-placeholder="Number of Ports" >
+              <option></option>
+              <option>Not selected</option>
               <option value="test1">test1</option>
               <option value="test2">test2</option>
               <option value="test3">test3</option>
               <option value="test4">test4</option>
             </select>
-            <select class="category__select" name="license[]" multiple="multiple">
+            <select class="category__select" name="license" data-placeholder="License">
+              <option></option>
+              <option>Not selected</option>
               <option value="license1">license1</option>
               <option value="license2">license2</option>
               <option value="license3">license3</option>
               <option value="license4">license4</option>
             </select>
-            <select class="category__select" name="port-speed[]" multiple="multiple">
+            <select class="category__select" name="port-speed" data-placeholder="Port-Speed">
+              <option></option>
+              <option>Not selected</option>
               <option value="speed1">speed1</option>
               <option value="speed2">speed2</option>
               <option value="speed3">speed3</option>
               <option value="speed4">speed4</option>
             </select>
-            <select class="category__select" name="name[]" multiple="multiple">
+
+            <div class="category__price-desc" >
+              <button class="category__price-button" type="button">Price</button>
+              <div class="category__price-toggle category__filter-option category__filter-price">
+                <div class="category__price"> <p>FROM</p> <div class="category__price-input"><input type="number" name="price-from" value="0"> $</div></div>
+                <div class="category__price"><p> TO</p> <div class="category__price-input"><input type="number" name="price-to" value="1000"> $</div></div>
+              </div>
+
+            </div>
+            <select class="category__select" name="name" data-placeholder="Name">
+              <option></option>
+              <option>Not selected</option>
               <option value="name1">name1</option>
               <option value="name2">name2</option>
               <option value="name3">name3</option>
               <option value="name4">name4</option>
             </select>
-            <select class="category__select" name="sort_by">
+            <select class="category__select" name="sort_by" data-placeholder="Sort by">
+              <option></option>
+              <option>Not selected</option>
               <option value="Low to high">Low to high </option>
               <option value="High to low">High to low</option>
               <option value="Popular">Popular</option>
@@ -369,7 +390,6 @@
                     <p class="card__info">48-Port 1000-BASE-T | 4x 10G SFP+ | dual PSU | Rack-Ears [...]</p>
                     <div class="card__variants">
                       <div>Item variants</div>
-
                     </div>
                   </div>
                   <div class="card__bottom">
@@ -380,16 +400,11 @@
                     </div>
                   </div>
                 </div>
-
               </li>
               <li class="card__item-more ">
-
                 <div class="section__view more">View more</div>
-
               </li>
             </ul>
-
-
         </div>
       </div>
     </section>

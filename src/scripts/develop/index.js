@@ -39,7 +39,28 @@ function changeMob() {
     }
 }
 
-const validateForm = (form, func) => {
+function addToCart(){
+    $(document).on('click','.card__buy-icon', function (){
+        let product_id = $(this).closest('.card__item').data('id')
+        let obj = {action:'add-to-cart', product_id}
+        $.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            data: obj,
+            method: 'POST',
+            success: function (res) {
+                console.log('success ajax');
+                funcSuccess(res)
+            },
+            error: function (error) {
+                console.log('error ajax');
+                funcError(error)
+            },
+        });
+    })
+}
+
+
+function validateForm (form, func, noreset) {
     form.on("submit", function (e) {
         e.preventDefault();
     });
@@ -54,14 +75,25 @@ const validateForm = (form, func) => {
 
     form.validate({
         rules: {
-            username: {
+            name: {
                 required: true,
-                // goodMessage: true,
+                goodMessage: true,
+            },
+            lastname: {
+                required: true,
+                goodMessage: true,
+            },
+            company_name: {
+                required: true,
+                goodMessage: true,
             },
             email: {
                 required: true,
                 goodEmail: true,
                 email: true
+            },
+            phone: {
+                required: true,
             },
             password: {
                 required: true,
@@ -78,17 +110,52 @@ const validateForm = (form, func) => {
                 required: true,
                 minlength: 8,
                 equalTo: "#passwordNew"
-            }
+            },
+            passwordReg: {
+                required: true,
+                minlength: 8
+            },
+            passwordRegRepeat: {
+                required: true,
+                minlength: 8,
+                equalTo: "#passwordReg"
+            },
+            country: {
+                required: true
+            },
+            city: {
+                required: true
+            },
+            zip: {
+                required: true
+            },
+            street: {
+                required: true
+            },
+            vat: {
+                required: true
+            },
 
         },
         messages: {
-            username: {
+            name: {
                 required: "This field is required",
-                email: "Please enter correct username"
+                email: "Please enter correct name"
+            },
+            lastname: {
+                required: "This field is required",
+                email: "Please enter correct last name"
+            },
+            company_name: {
+                required: "This field is required",
+                email: "Please enter correct company name"
             },
             email: {
                 required: "This field is required",
                 email: "Please enter correct email"
+            },
+            phone: {
+                required: "This field is required",
             },
             password: {
                 required: "This field is required",
@@ -106,12 +173,35 @@ const validateForm = (form, func) => {
             passwordNewRepeat: {
                 required: "This field is required",
                 equalTo: "Password not equal"
-            }
+            },
+            passwordReg: {
+                required: "This field is required",
+                minlength: "Password can't be shorter than 8 characters"
+            },
+            passwordRegRepeat: {
+                required: "This field is required",
+                equalTo: "Password not equal"
+            },
+            country: {
+                required: "This field is required",
+            },
+            city: {
+                required: "This field is required",
+            },
+            zip: {
+                required: "This field is required",
+            },
+            street: {
+                required: "This field is required",
+            },
+            vat: {
+                required: "This field is required",
+            },
 
         },
         submitHandler: function () {
             func();
-            form[0].reset();
+            noreset ? null : form[0].reset()
         }
     });
 };
@@ -125,6 +215,7 @@ function ajaxSend(form, funcSuccess,funcError ) {
         success: function (res) {
             console.log('success ajax');
             funcSuccess(res)
+            $('.category__list').append(res)
         },
         error: function (error) {
             console.log('error ajax');
@@ -191,32 +282,33 @@ function toggleModal(btn, modal) {
 }
 
 let page = 1;
-function loadMore(action, btn){
-    $(document).on('click',btn, function (){
-        let btn = $(this)
-        let wrap = btn.closest('.tab__content-item')
-        let category = wrap.attr('data-category')
-        let page = wrap.attr('data-page')
+function loadMore(){
+    $(document).on('click','.more', function (){
+
+        let button = $(this)
+        let data
         page++
 
-        wrap.attr('data-page', page)
-        let obj = { action, page, category}
+        if($(".category__form").length > 0 ) {
+            $('input[name="page"]').val(page)
+            data = $(".category__form").serialize();
+        } else{
+            data = {action:"show-product", page}
+        }
+
         $.ajax({
             url: '/wp-admin/admin-ajax.php',
-            data: obj,
+            data: data,
             method: 'POST',
             success: function () {
                 console.log('success ajax');
-                btn.hide()
-                btn.closest('tbody').append(res);
-                $('.notification__mob').append(res)
+                button.hide()
+
             },
             error: function (error) {
                 console.log('error ajax');
+                button.hide()
             },
-            complete: function (){
-
-            }
         });
     })
 }
@@ -368,6 +460,18 @@ $(document).ready(function(){
             $('.login__form-success').addClass('active')
         })
     });
+    let editUser = $('.login__edit');
+    validateForm(editUser, function () {
+        ajaxSend(editUser, '/wp-admin/admin-ajax.php', function (){
+
+        }, function (){
+
+        })
+    },1);
+
+
+
+
 
     let passwordReset = $('.login__form-recovery');
     validateForm(passwordReset, function () {
@@ -385,13 +489,14 @@ $(document).ready(function(){
 
 
     $('.header__burger').on('click', openMenu);
-    // loadMore('more_project', '.project__wrap .load__more')
+    loadMore()
     // loadMore('more_notification', '.notification__wrap .load__more')
     counter()
     tab();
     addToFavorite()
     showPassword()
     search()
+    addToCart()
 });
 
 $(window).load(function(){

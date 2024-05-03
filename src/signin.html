@@ -29,11 +29,12 @@
         </form>
         <form action="" class="login__form login__registration">
           <input type="hidden" name="action" value="registration" >
+          <input type="hidden" name="type" value="customer">
           <h2 class="login__title">Registration</h2>
 
           <div class="tab__header">
-            <button class="tab__header-item active">Customer</button>
-            <button class="tab__header-item">Company</button>
+            <button class="tab__header-item active tab__reg " type="button">Customer</button>
+            <button class="tab__header-item tab__reg" type="button">Company</button>
           </div>
           <div class="tab__content">
             <div class="tab__content-item">
@@ -52,8 +53,25 @@
                   </div>
                   <div class="login__input">
                     <label for="phone">Phone</label>
-                    <input type="password" name="phone" id="phone" placeholder="Start typing...">
+                    <input id="phone" type="number" placeholder="Start typing..." name="phone">
                   </div>
+                  <div class="login__input">
+                    <label for="phone">Country</label>
+                    <select id="countrySelect" name="country"  data-placeholder="Select country">
+                      <option></option>
+                      <option>Not select</option>
+                    </select>
+                  </div>
+                <div class="login__input">
+                  <label for="passwordReg">Password</label>
+                  <input type="password" name="passwordReg" id="passwordReg" placeholder="Start typing...">
+                  <div class="login__input-eye"></div>
+                </div>
+                <div class="login__input">
+                  <label for="passwordRegRepeat">Repeat password</label>
+                  <input type="password" name="passwordRegRepeat" id="passwordRegRepeat" placeholder="Start typing...">
+                  <div class="login__input-eye"></div>
+                </div>
                   <label class="checkbox" for="accept">
                     <input type="checkbox" name="accept" checked  id="accept">
                     <span class="checkmark"></span>
@@ -68,8 +86,8 @@
             <div class="tab__content-item">
               <div class="login__form-flex">
                 <div class="login__input">
-                  <label for="company-name">First name</label>
-                  <input type="text" name="company-name" id="company-name" placeholder="Start typing..." >
+                  <label for="company-name">Company Name</label>
+                  <input type="text" name="company_name" id="company-name" placeholder="Start typing..." >
                 </div>
                 <div class="login__input">
                   <label for="email-reg2"> Email</label>
@@ -89,11 +107,11 @@
                 </div>
                 <div class="login__input">
                   <label for="street">Street</label>
-                  <input type="password" name="street" id="street" placeholder="Start typing...">
+                  <input type="text" name="street" id="street" placeholder="Start typing...">
                 </div>
                 <div class="login__input">
                   <label for="vat">VAT ID</label>
-                  <input type="password" name="vat" id="vat" placeholder="Start typing...">
+                  <input type="text" name="vat" id="vat" placeholder="Start typing...">
                 </div>
                 <label class="checkbox" for="accept2">
                   <input type="checkbox" name="accept" checked  id="accept2">

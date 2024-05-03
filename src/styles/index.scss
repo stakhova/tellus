@@ -569,7 +569,7 @@
 
 .login{
   position: relative;
-  margin-top: 9rem;
+  margin:   9rem 0 4rem  ;
   //flex: 1;
   //display: flex;
   //align-items: center;
@@ -649,7 +649,6 @@
       width: 1.8rem;
       height: 1.8rem;
       background: url("../img/password-show.svg") center/1.8rem 1.8rem no-repeat;
-      -webkit-tap-highlight-color: transparent;
       &.active {
         background: url("../img/password-hide.svg") center/1.8rem 1.8rem no-repeat;
       }
@@ -694,7 +693,7 @@
 label.error{
   position: absolute;
   color:var(--color-red);
-  bottom: -1.5rem;
+  bottom: -2rem;
   left: 0;
   font: 400 1.4rem / normal var(--Ubuntu) ;
 }
@@ -961,6 +960,123 @@ input:-internal-autofill-selected {
 background-color: transparent;
 }
 
+.select2-container--default .select2-selection--single .select2-selection__placeholder{
+  color: #000;
+  font: 400 1.2rem / normal var(--Ubuntu);
+  text-transform: uppercase;
+}
+.select2-container .select2-selection--single .select2-selection__rendered{
+  color: #000;
+  font: 400 1.2rem / normal var(--Ubuntu);
+}
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--single{
+  border-radius: 1rem;
+}
+
+.select2-container--default .select2-selection--single{
+  border-radius: 1rem;
+  background: #F1F2F6;
+  height: auto;
+  border: none;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+  width: 1.2rem;
+  height: 1.2rem;
+  top:50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  &:after{
+    content:'';
+    position: absolute;
+    width: 1.2rem;
+    height: 1.2rem;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: url("../img/down-black.svg") center/1.2rem 1.2rem no-repeat;
+  }
+}
+.select2-search--dropdown{
+  display: none;
+}
+.select2-container .select2-selection--single .select2-selection__rendered{
+  padding: 1rem 3.2rem 1rem 1.4rem ;
+  line-height: unset;
+  height: auto;
+  text-transform: uppercase;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b{
+  display: none;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected]{
+  background-color: transparent;
+  color:var(--color-primary);
+}
+.select2-results{
+  padding: 0.4rem 0.7rem;
+
+
+}
+.select2-container--default .select2-results>.select2-results__options{
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.3rem;
+    border-radius: 1rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 1rem;
+  }
+}
+.select2-results__option{
+  padding: 1.6rem 1.3rem;
+  font: 400 1.4rem / normal var(--Ubuntu);
+  white-space: nowrap;
+}
+.select2-dropdown.select2-dropdown--below{
+  width: max-content!important;
+  min-width: 20rem;
+}
+.select2-dropdown{
+  border-radius: 2rem;
+  border: 0.1rem solid #D1D7DE;
+  margin-top: 0.7rem;
+  background: #FFF;
+}
+.select2-container--open .select2-dropdown--below{
+  border-radius: 2rem;
+  border: 0.1rem solid #D1D7DE;
+}
+
+
+.select2-results__option{
+  position: relative;
+  &:not(:last-child):after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 1.3rem);
+    height: 0.1rem;
+    background-color: #D1D7DE;;
+  }
+}
+.iti__selected-flag{
+  padding: 0;
+
+}
+.iti__selected-flag .iti__flag{
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+
+}
+.iti label.error{
+  bottom: -4rem;
+  left: -2rem;
+}
 
 @media only screen and (max-width: 666px) {
   .wrap .container {
@@ -1051,8 +1167,8 @@ background-color: transparent;
     margin-bottom: 2rem;
   }
   .login {
-    margin-top: 3rem;
-    padding: 0 1.4rem;
+    //margin-top: 3rem;
+    padding: 3rem 1.4rem;
   }
   .login__title {
     font-size: 1.8rem;
@@ -1068,6 +1184,11 @@ background-color: transparent;
    width: unset;
 
   }
+
+  .modal__content {
+    max-width: 90%;
+   }
+
 
 }
 

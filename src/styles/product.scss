@@ -6,8 +6,11 @@
     display: flex;
     gap:4.2rem;
   }
+  &__mob{
+    display: none;
+  }
   &__info{
-    width: 100%;
+    //width: 100%;
     &-head{
       display: flex;
       gap: 1rem;
@@ -156,6 +159,9 @@
   }
   &__nav{
     position: relative;
+    .swiper-button-next{
+      right: 0 ;
+    }
   }
   &__pagination{
     top: -3rem;
@@ -304,5 +310,23 @@
   }
   .product .container{
     padding: 2rem 1.4rem 1.4rem;
+  }
+  .product__wrap{
+    flex-direction: column;
+  }
+  .product__gallery{
+    width: 100%;
+  }
+  .product__related .container{
+    padding: 4rem 0 2rem 1.4rem;
+  }
+  .product__related-nav{
+    display: none;
+  }
+  .product__mob{
+    display: block;
+  }
+  .product__info-head{
+    display: none;
   }
 }
