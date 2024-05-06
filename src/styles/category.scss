@@ -189,15 +189,22 @@
         background: transparent;
         align-items: center;
         gap:0.6rem;
+        padding: 0;
         &-input{
           border: 0.1rem solid #D1D7DE;
           background: #FFF;
-          min-width: 11.6rem;
+          min-width: 8.6rem;
           border-radius: 0.8rem;
           padding: 1rem;
+          display: flex;
+          align-items: center;
+          font: 400 1.2rem / normal var(--Ubuntu);
           input{
             border: none;
-            width: max-content;
+            width: 3.3rem;
+            text-align: right;
+            color: #000;
+            font: 400 1.2rem / normal var(--Ubuntu);
           }
         }
       }
@@ -206,11 +213,17 @@
     &-price{
       display: flex;
       gap:3rem;
+      flex-wrap: nowrap;
       align-items: center;
     }
   }
 
   &__price{
+    p{
+      color: #000;
+      font: 400 1.2rem / normal var(--Ubuntu);
+      text-transform: uppercase;
+    }
     &-desc{
       position: relative;
     }
@@ -243,8 +256,12 @@
       display: none;
       min-width: 20rem;
       padding: 2rem 1.2rem;
+      gap:1rem;
       &.active{
         display: flex;
+      }
+      .category__price{
+        padding: 0;
       }
     }
   }

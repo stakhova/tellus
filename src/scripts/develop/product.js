@@ -47,6 +47,7 @@ function initProductSlider(){
 
 
     const sliderProduct = new Swiper('.product__slider', {
+        spaceBetween:10,
         pagination: {
             el: '.product__pagination',
             clickable: true

@@ -629,9 +629,27 @@
     position: relative;
     border-radius: 1rem;
     background:var(--color-input);
+    .select2-container .select2-selection--single .select2-selection__rendered{
+      padding: 0;
+
+
+
+    }
+    .select2-container--default .select2-selection--single .select2-selection__placeholder{
+      color:#A4B0BE;
+      text-transform: initial;
+      font-size: 1.4rem;
+    }
+    .select2-container--default .select2-selection--single{
+      background-color: transparent;
+    }
+    .select2-selection__arrow{
+      display: none;
+    }
     label{
       color:var(--color-label);
       font: 500 1.2rem / normal var(--Ubuntu);
+
     }
     input{
       font: 400 1.4rem / normal var(--Ubuntu);
@@ -640,6 +658,7 @@
       &::placeholder{
         color:#A4B0BE;
       }
+
     }
     &-eye {
       cursor: pointer;
@@ -1076,6 +1095,13 @@ background-color: transparent;
 .iti label.error{
   bottom: -4rem;
   left: -2rem;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 
 @media only screen and (max-width: 666px) {

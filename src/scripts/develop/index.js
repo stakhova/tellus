@@ -12,8 +12,26 @@ function addToFavorite(){
     $(document).on('click', '.like', function (){
         $(this).toggleClass('active')
         let to_favorite = $(this).hasClass('active') ? 'add': 'remove'
-        let product_id = $(this).closest('.card__item').data('id')
+
+        if(window.innerWidth > 666  && $('.product').length > 0){
+            if($(this).hasClass('product__favorite-remove')  ){
+                $(this).text('Add to watchlist')
+                $(this).removeClass('product__favorite-remove')
+            } else{
+                $(this).addClass('product__favorite-remove')
+                $(this).text('Remove from watchlist')
+            }
+        }
+
+        let product_id
+        if($('.product').length > 0){
+            product_id = $(this).closest('.product').data('id')
+        } else{
+            product_id = $(this).closest('.card__item').data('id')
+        }
         let obj = {action:'add-to-favorite', product_id, to_favorite}
+
+
         $.ajax({
             url: '/wp-admin/admin-ajax.php',
             data: obj,
