@@ -373,14 +373,14 @@ function loadMore(){
             url: '/wp-admin/admin-ajax.php',
             data: data,
             method: 'POST',
-            success: function () {
+            success: function (res) {
                 console.log('success ajax');
                 button.hide()
+                $('.category__list').append(res)
 
             },
             error: function (error) {
                 console.log('error ajax');
-                button.hide()
             },
         });
     })
