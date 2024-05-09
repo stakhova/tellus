@@ -12,7 +12,10 @@ function addToFavorite(){
     $(document).on('click', '.like', function (){
         $(this).toggleClass('active')
         let to_favorite = $(this).hasClass('active') ? 'add': 'remove'
-
+        let item
+        if($('.watchlist').length > 0){
+            item = $(this).closest('.card__item')
+        }
         if(window.innerWidth > 666  && $('.product').length > 0){
             if($(this).hasClass('product__favorite-remove')  ){
                 $(this).text('Add to watchlist')
@@ -29,7 +32,7 @@ function addToFavorite(){
         } else{
             product_id = $(this).closest('.card__item').data('id')
         }
-        let obj = {action:'add-to-favorite', product_id, to_favorite}
+        let obj = {action:'add_to_favorite', product_id, to_favorite}
 
 
         $.ajax({
@@ -38,14 +41,17 @@ function addToFavorite(){
             method: 'POST',
             success: function (res) {
                 console.log('success ajax');
-                funcSuccess(res)
+                // funcSuccess(res)
+                item.remove()
             },
             error: function (error) {
                 console.log('error ajax');
-                funcError(error)
-            },
-            complete: function (){
-
+                // funcError(error)
+                item.remove()
+                if($('.watchlist .card__item').length < 1){
+                    $('.card__item-more').remove()
+                    $('.watchlist__empty').css('display','flex')
+                }
             }
         });
     })
@@ -58,22 +64,62 @@ function changeMob() {
 }
 
 function addToCart(){
+
+    $('.card__buy-icon').each(function (){
+        let variation = $(this).closest('.card__item').find('.card__variants-select')
+
+        if(variation.length > 0 && variation.val() ==''){
+            $(this).addClass('variable')
+            $(this).next().addClass('variable')
+        }
+    })
+
+    $(document).on('change','.card__variants-select', function (){
+        if($(this).val() !== ""){
+            $(this).closest('.card__item').find('.card__buy-icon').removeClass('variable')
+            $(this).closest('.card__item').find('.card__buy-button').removeClass('variable')
+            $(this).closest('.card__item').find('.card__hint').remove()
+        }
+
+    })
+
+
+
     $(document).on('click','.card__buy-icon', function (){
-        let product_id = $(this).closest('.card__item').data('id')
-        let obj = {action:'add-to-cart', product_id}
-        $.ajax({
-            url: '/wp-admin/admin-ajax.php',
-            data: obj,
-            method: 'POST',
-            success: function (res) {
-                console.log('success ajax');
-                funcSuccess(res)
-            },
-            error: function (error) {
-                console.log('error ajax');
-                funcError(error)
-            },
-        });
+        if($(this).hasClass('variable')){
+            $(this).closest('.card__item').find('.card__variants').prepend('<p class="card__hint">Please, select option</p>')
+        } else{
+            let product_id = $(this).closest('.card__item').data('id')
+            let variation = $(this).closest('.card__item').find('.card__variants-select').val()
+            let obj = {action:'add_to_cart', product_id, variation}
+            $.ajax({
+                url: '/wp-admin/admin-ajax.php',
+                data: obj,
+                method: 'POST',
+                success: function (res) {
+                    console.log('success ajax');
+                    funcSuccess(res)
+                },
+                error: function (error) {
+                    console.log('error ajax');
+                    funcError(error)
+                },
+            });
+        }
+
+
+    })
+    $(document).on('click','.card__buy-button', function (e){
+        e.preventDefault()
+        if($(this).hasClass('variable')){
+            $(this).closest('.card__item').find('.card__variants').prepend('<p class="card__hint">Please, select option</p>')
+        } else{
+            let url = $(this).attr('href')
+            let variation = $(this).closest('.card__item').find('.card__variants-select').val()
+            let newUrl =  `${url}&variation_id=${variation}`
+            window.location.href = newUrl;
+        }
+
     })
 }
 
@@ -311,7 +357,7 @@ function loadMore(){
             $('input[name="page"]').val(page)
             data = $(".category__form").serialize();
         } else{
-            data = {action:"show-product", page}
+            data = {action:"show_product", page}
         }
 
         $.ajax({
@@ -433,7 +479,49 @@ function showHint(modal) {
     });
 }
 
+function initCountryCity(){
+    $(".countrySelect").select2({
+        ajax: {
+            url: "https://api.first.org/data/v1/countries",
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    q: params.term, // search term
+                };
+            },
+            processResults: function (data, params) {
+                return {
+                    results: Object.entries(data.data).map( (elem) => {
+                        return {
+                            id: elem[0],
+                            text: elem[1].country,
+                        }
+                    }),
+                };
+            },
+            cache: true
+        },
+        placeholder: 'Search for a country',
 
+    });
+    // $.ajax({
+    //     url: 'https://restcountries.com/v3.1/all',
+    //     method: 'GET',
+    //     success: function(response) {
+    //         response.forEach(function(country) {
+    //             $('#countrySelect').append($('<option>', {
+    //                 value: country.name.common.toLowerCase(), // Using country name in lowercase as value
+    //                 text: country.name.common
+    //             }));
+    //         });
+    //     },
+    //     error: function(error) {
+    //         console.error('Error fetching countries:', error);
+    //     }
+    // });
+
+};
 
 
 $(document).ready(function(){
@@ -486,6 +574,16 @@ $(document).ready(function(){
 
         })
     },1);
+    let editUserCompany = $('.login__edit-company');
+    validateForm(editUserCompany, function () {
+        ajaxSend(editUserCompany, '/wp-admin/admin-ajax.php', function (){
+
+        }, function (){
+
+        })
+    },1);
+
+
 
 
 
@@ -501,21 +599,25 @@ $(document).ready(function(){
     changeMob()
     toggleModal($('.account__invite-button'), $('.modal__invite'));
 
-
-
-
-
-
     $('.header__burger').on('click', openMenu);
     loadMore()
-    // loadMore('more_notification', '.notification__wrap .load__more')
     counter()
     tab();
     addToFavorite()
     showPassword()
     search()
     addToCart()
+    initCountryCity()
+
+
+    $('.card__variants-select').each(function() {
+        $(this).select2({
+            dropdownParent: $(this).closest('section')
+        });
+    });
+
 });
+
 
 $(window).load(function(){
 

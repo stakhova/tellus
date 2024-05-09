@@ -40,6 +40,9 @@
   .container{
     padding: 7rem 5.5rem ;
   }
+  .swiper-slide-next .select2{
+    pointer-events: none;
+  }
   &__title{
     font: 700 2.2rem / normal var(--Ubuntu);
     text-align: center;
@@ -77,5 +80,9 @@
   }
   .index .section__view {
     margin-top: 3rem;
+  }
+  .index .card__img {
+    height: 57.5vw;
+    min-height: 57.5vw;
   }
 }

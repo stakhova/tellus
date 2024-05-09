@@ -1,8 +1,8 @@
 function initSliderIndex() {
     $('.index .index__slider').each(function(index, element) {
         let slider = new Swiper(element, {
-            slidesPerView: 1.75,
-            spaceBetween: 12,
+            slidesPerView: 1.25,
+            spaceBetween: 17,
             loop: true,
         });
     });

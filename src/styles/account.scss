@@ -178,6 +178,58 @@
 }
 
 
+.address{
+  display: flex;
+  flex-direction: column;
+  gap:1rem;
+  &__item{
+    display: flex;
+    gap:2rem;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 69rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: #F5F7F9;
+    & > *{
+      color:#212121;
+      font: 400 1.4rem / normal var(--Ubuntu);
+    }
+  }
+  &__btn{
+    display: flex;
+    gap:2rem;
+    align-items: center;
+  }
+  &__edit{
+    font: 400 1.4rem / normal var(--Ubuntu);
+    color:var(--color-primary);
+  }
+  &__delete{
+    width: 2.8rem;
+    height: 2.8rem;
+    cursor: pointer;
+    position: relative;
+    top: 0;
+    margin-left: auto;
+    display: block;
+    right: 0;
+    background: url("../img/delete.svg") center/2.8rem 2.8rem no-repeat;
+  }
+  &__add{
+    padding: 1.4rem 3rem;
+    width: max-content;
+    border-radius: 1rem;
+    border: 0.1rem solid var(--color-primary);
+    background: var(--color-white);
+    color:var(--color-primary);
+    margin-top: 2rem;
+    font: 700 1.4rem / normal var(--Ubuntu);
+  }
+}
+
+
+
 @media only screen and (max-width: 666px) {
   .account .container{
     padding: 2rem 1.4rem 2rem  ;

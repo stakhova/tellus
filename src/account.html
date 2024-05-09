@@ -40,7 +40,58 @@
                                         <label for="email-reg"> Email</label>
                                         <input type="text" name="email" id="email-reg" value="ivan12345@gmail.com" >
                                      </div>
-                                    <button class="login__button section__button">Edit</button>
+                                <div class="login__input">
+                                    <label for="phone1">Phone</label>
+                                    <input id="phone1" type="number" placeholder="Start typing..." name="phone" value="0674444444">
+                                </div>
+                                <div class="login__input">
+                                    <label for="countrySelect1">Country</label>
+                                    <select id="countrySelect1" name="country" class="countrySelect" >
+                                        <option></option>
+                                        <option value="Ukraine" selected>Ukraine</option>
+                                        <option>Not select</option>
+                                    </select>
+                                </div>
+                                <button class="login__button section__button">Edit</button>
+                            </form>
+                            <form action="" class="login__form login__form-flex login__edit-company">
+                                <input type="hidden" name="action" value="edit_address" >
+                                <div class="login__form-flex">
+                                    <div class="login__input">
+                                        <label for="company-name2">Company Name</label>
+                                        <input type="text" name="company_name" id="company-name2" value="Company Name" >
+                                    </div>
+                                    <div class="login__input">
+                                        <label for="email-reg3"> Email</label>
+                                        <input type="text" name="email" id="email-reg3" value="sdf@dsdd.com" >
+                                    </div>
+                                    <div class="login__input">
+                                        <label for="countrySelect11">Country</label>
+                                        <select id="countrySelect11" name="country" class="countrySelect" >
+                                            <option></option>
+                                            <option value="Ukraine" selected>Ukraine</option>
+                                            <option>Not select</option>
+                                        </select>
+                                    </div>
+                                    <div class="login__input">
+                                        <label for="city2">City</label>
+                                        <input type="text" name="city" id="city2" value="City" >
+                                    </div>
+                                    <div class="login__input">
+                                        <label for="zip2">Zip</label>
+                                        <input type="text" name="zip" id="zip2" value="Zip">
+                                    </div>
+                                    <div class="login__input">
+                                        <label for="street2">Street</label>
+                                        <input type="text" name="street" id="street2" value="Street">
+                                    </div>
+                                    <div class="login__input">
+                                        <label for="vat2">VAT ID</label>
+                                        <input type="text" name="vat" id="vat2" value="vat">
+                                    </div>
+                                    <button class="login__button section__button">Save</button>
+
+                                </div>
                             </form>
                         </div>
                         <div class="tab__content-item">
@@ -65,16 +116,102 @@
                             <div class="address">
                                 <div class="address__item">
                                    <h3>Company Name, Email, Country, City, Zip code, Street, VAT ID</h3>
-                                    <button class="address__edit">Edit</button>
-                                    <button class="address__delete"></button>
+                                    <div class="address__btn">
+                                        <button class="address__edit">Edit</button>
+                                        <button class="address__delete"></button>
+                                    </div>
+
                                 </div>
                                 <div class="address__item">
                                     <h3>Company Name, some_email@gmail.com, Germany, 36280, Niederrheinische Str. 12a, Oberaula.</h3>
-                                    <button class="address__edit">Edit</button>
-                                    <button class="address__delete"></button>
+                                    <div class="address__btn">
+                                        <button class="address__edit">Edit</button>
+                                        <button class="address__delete"></button>
+                                    </div>
                                 </div>
-                                <button class="section__button section__view">Add new</button>
+                                <button class=" address__add">Add new</button>
                             </div>
+                            <form action="" class=" address__form">
+                                <div class="login__form-flex">
+                                <div class="login__input">
+                                    <label for="name1">First name</label>
+                                    <input type="text" name="name" id="name1" placeholder="Start typing..." >
+                                </div>
+                                <div class="login__input">
+                                    <label for="lastname1">Last name</label>
+                                    <input type="text" name="lastname" id="lastname1" placeholder="Start typing..." >
+                                </div>
+                                <div class="login__input">
+                                    <label for="email-reg1"> Email</label>
+                                    <input type="text" name="email" id="email-reg1" placeholder="Start typing..." >
+                                </div>
+                                <div class="login__input">
+                                    <label for="phone">Phone</label>
+                                    <input id="phone" type="number" placeholder="Start typing..." name="phone">
+                                </div>
+                                <div class="login__input">
+                                    <label for="phone">Country</label>
+                                    <select id="countrySelect" name="country"  data-placeholder="Select country...">
+                                        <option></option>
+                                        <option>Not select</option>
+                                    </select>
+                                </div>
+                                <div class="login__input">
+                                    <label for="passwordReg">Password</label>
+                                    <input type="password" name="passwordReg" id="passwordReg" placeholder="Start typing...">
+                                    <div class="login__input-eye"></div>
+                                </div>
+                                <div class="login__input">
+                                    <label for="passwordRegRepeat">Repeat password</label>
+                                    <input type="password" name="passwordRegRepeat" id="passwordRegRepeat" placeholder="Start typing...">
+                                    <div class="login__input-eye"></div>
+                                </div>
+                                <label class="checkbox" for="accept">
+                                    <input type="checkbox" name="accept" checked  id="accept">
+                                    <span class="checkmark"></span>
+                                    <p>I accepts the tellus <a href="">terms</a> and <a href="">conditions</a></p>
+                                </label>
+                                <button class="login__button section__button">Log In</button>
+                                <p class="login__text login__sign">
+                                    Don't have an account? <button type="button">Sign Up</button>
+                                </p>
+                            </div>
+                            </form>
+                            <form action="" class=" address__form">
+                                <input type="hidden" name="action" value="edit_address" >
+                                        <div class="login__form-flex">
+                                            <div class="login__input">
+                                                <label for="company-name">Company Name</label>
+                                                <input type="text" name="company_name" id="company-name" placeholder="Start typing..." >
+                                            </div>
+                                            <div class="login__input">
+                                                <label for="email-reg2"> Email</label>
+                                                <input type="text" name="email" id="email-reg2" placeholder="Start typing..." >
+                                            </div>
+                                            <div class="login__input">
+                                                <label for="country">Country</label>
+                                                <input type="text" name="country" id="country" placeholder="Start typing..." >
+                                            </div>
+                                            <div class="login__input">
+                                                <label for="city">City</label>
+                                                <input type="text" name="city" id="city" placeholder="Start typing..." >
+                                            </div>
+                                            <div class="login__input">
+                                                <label for="zip">Zip</label>
+                                                <input type="text" name="zip" id="zip" placeholder="Start typing...">
+                                            </div>
+                                            <div class="login__input">
+                                                <label for="street">Street</label>
+                                                <input type="text" name="street" id="street" placeholder="Start typing...">
+                                            </div>
+                                            <div class="login__input">
+                                                <label for="vat">VAT ID</label>
+                                                <input type="text" name="vat" id="vat" placeholder="Start typing...">
+                                            </div>
+                                            <button class="login__button section__button">Save</button>
+
+                                </div>
+                            </form>
                         </div>
                         <div class="tab__content-item">
                             <div class="history">
@@ -238,7 +375,7 @@
                         </div>
                         <form action="" class="form__invite">
                             <div class="login__input">
-                                <input type="hidden" name="action" value="invite-by-email" >
+                                <input type="hidden" name="action" value="invite_by_email" >
                                 <label for="inviteEmail">Invite by email</label>
                                 <input type="text" name="email" id="inviteEmail" placeholder="Add email">
                                 <button class="section__button login__input-btn disabled" type="button" >Invite</button>

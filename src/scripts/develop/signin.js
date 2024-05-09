@@ -32,49 +32,7 @@ function passwordRecovery(){
         $('.login__form-recovery').addClass('active');
     }
 }
-function initCountryCity(){
-    $("#countrySelect").select2({
-        ajax: {
-            url: "https://api.first.org/data/v1/countries",
-            dataType: 'json',
-            delay: 250,
-            data: function (params) {
-                return {
-                    q: params.term, // search term
-                };
-            },
-            processResults: function (data, params) {
-                return {
-                    results: Object.entries(data.data).map( (elem) => {
-                        return {
-                            id: elem[0],
-                            text: elem[1].country,
-                        }
-                    }),
-                };
-            },
-            cache: true
-        },
-        placeholder: 'Search for a country',
 
-    });
-    // $.ajax({
-    //     url: 'https://restcountries.com/v3.1/all',
-    //     method: 'GET',
-    //     success: function(response) {
-    //         response.forEach(function(country) {
-    //             $('#countrySelect').append($('<option>', {
-    //                 value: country.name.common.toLowerCase(), // Using country name in lowercase as value
-    //                 text: country.name.common
-    //             }));
-    //         });
-    //     },
-    //     error: function(error) {
-    //         console.error('Error fetching countries:', error);
-    //     }
-    // });
-
-};
 
 function addFlag(){
     let phoneInputID = "#phone";
@@ -108,7 +66,7 @@ function disabledInput(){
 }
 $(document).ready(function(){
     loginFormChange()
-    initCountryCity()
+
     // addFlag()
     disabledInput();
     passwordRecovery()
