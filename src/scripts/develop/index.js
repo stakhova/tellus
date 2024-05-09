@@ -10,7 +10,18 @@ const openMenu = () => {
 };
 function addToFavorite(){
     $(document).on('click', '.like', function (){
-        $(this).toggleClass('active')
+        let product_id
+        if($('.product').length > 0){
+            product_id = $(this).closest('.product').data('id')
+        } else{
+            product_id = $(this).closest('.card__item').data('id')
+        }
+        $('.card__item').each(function (){
+            console.log('ididid',$(this).data('id'), product_id)
+            if($(this).data('id') == product_id){
+                $(this).find('.like').toggleClass('active')
+            }
+        })
         let to_favorite = $(this).hasClass('active') ? 'add': 'remove'
         let item
         if($('.watchlist').length > 0){
@@ -26,12 +37,10 @@ function addToFavorite(){
             }
         }
 
-        let product_id
-        if($('.product').length > 0){
-            product_id = $(this).closest('.product').data('id')
-        } else{
-            product_id = $(this).closest('.card__item').data('id')
-        }
+
+
+
+
         let obj = {action:'add_to_favorite', product_id, to_favorite}
 
 
@@ -351,15 +360,15 @@ function loadMore(){
 
         let button = $(this)
         let data
+        let post__in = $(this).closest('.category__list').data('post__in')
         page++
 
         if($(".category__form").length > 0 ) {
             $('input[name="page"]').val(page)
             data = $(".category__form").serialize();
         } else{
-            data = {action:"show_product", page}
+            data = {action:"show_product_watchlist", page, post__in }
         }
-
         $.ajax({
             url: '/wp-admin/admin-ajax.php',
             data: data,

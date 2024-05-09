@@ -403,7 +403,7 @@
   }
 }
 
-section{
+section:not(.category){
   .select2-dropdown.select2-dropdown--below{
     //width: auto!important;
     min-width: unset;
@@ -637,7 +637,7 @@ section{
 
 .watchlist{
   &__empty{
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 2rem;
     margin-top: 6rem;
