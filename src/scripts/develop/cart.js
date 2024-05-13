@@ -1,9 +1,9 @@
-function deleteFromCart(){
-    $(document).on('click','.cart__delete',  function (){
-        let product = $(this).closest('.cart__item')
-        let product_id = product.data('id')
+function deleteFromCart() {
+    $(document).on('click', '.cart__delete', function () {
+        let product = $(this).closest('.cart__item');
+        let product_id = product.data('id');
 
-        let obj = {action:'delete_product', product_id}
+        let obj = { action: 'delete_product', product_id };
 
         $.ajax({
             url: '/wp-admin/admin-ajax.php',
@@ -11,42 +11,33 @@ function deleteFromCart(){
             method: 'POST',
             success: function (res) {
                 console.log('success ajax');
-                product.remove()
+                $('.cart__total-price span').text(res.data.cart_total)
+                product.remove();
             },
             error: function (error) {
                 console.log('error ajax');
-
-
-
             },
-            complete: function (){
-
-            }
+            complete: function () {}
         });
-    })
-
+    });
 }
 
-function applyPromo(){
-    $(document).on('click','.cart__promocode >span',  function (){
-        $(this).hide()
-        $('.cart__promocode-block').addClass('active')
-    })
+function applyPromo() {
+    $(document).on('click', '.cart__promocode >span', function () {
+        $(this).hide();
+        $('.cart__promocode-block').addClass('active');
+    });
 
+    $(document).on('click', '.cart__promocode-block >span', function () {
+        $('.cart__promocode-block').removeClass('active');
+        $('.cart__promocode > span').show();
+    });
 
-    $(document).on('click','.cart__promocode-block >span',  function (){
-        $('.cart__promocode-block').removeClass('active')
-        $('.cart__promocode > span').show()
-    })
+    $(document).on('click', '.cart__promocode-block button', function () {
 
+        let promo = $('input[name=promo]').val();
 
-    $(document).on('click','.cart__promocode-block button',  function (){
-
-        let promo = $('input[name=promo]').val()
-
-        let obj = {action:'apply-promo', promo }
-
-
+        let obj = { action: 'apply-promo', promo };
 
         $.ajax({
             url: '/wp-admin/admin-ajax.php',
@@ -57,50 +48,40 @@ function applyPromo(){
             },
             error: function (error) {
                 console.log('error ajax');
-                promo.val('')
-
+                promo.val('');
             },
-            complete: function (){
-
-            }
         });
-    })
-
-
-
+    });
 }
 
-function changeCount(){
+function changeCount() {
 
-    function changeCountFunc (){
-        let product = $(this).closest('.cart__item')
-        let count = $('.cart__counter input').val()
-        let product_id = product.data('id')
-
-        let obj = {action:'change_product-count', product_id, count}
-
+    function changeCountFunc() {
+        let product = $(this).closest('.cart__item');
+        let count = product.find('.cart__counter input').val();
+        let product_id = product.data('id');
+        let obj = { action: 'change_product-count', product_id, count };
         $.ajax({
             url: '/wp-admin/admin-ajax.php',
             data: obj,
             method: 'POST',
             success: function (res) {
                 console.log('success ajax');
+                product.find('.cart__price-full span').text(res.data.item_total)
+                $('.cart__total-price span').text(res.data.cart_total)
             },
             error: function (error) {
                 console.log('error ajax');
             },
-            complete: function (){
-
-            }
         });
     }
-    $(document).on('change','.cart__counter input',  changeCountFunc)
-    $(document).on('click','.cart__counter button',  changeCountFunc)
-
+    $(document).on('change', '.cart__counter input', changeCountFunc);
+    $(document).on('click', '.cart__counter button', changeCountFunc);
 }
 
-$(document).ready(function(){
-    deleteFromCart()
-    changeCount()
-    applyPromo()
-})
+$(document).ready(function () {
+    deleteFromCart();
+    changeCount();
+    applyPromo();
+});
+//# sourceMappingURL=cart.js.map

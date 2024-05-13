@@ -69,6 +69,11 @@ function addToFavorite(){
 function changeMob() {
     if(window.innerWidth <= 666){
         $('.category__mob').append($('.category__select[name="sort_by"]'))
+        $('.invite__info-phone').each(function (){
+            $(this).closest('.invite__info-item').find('.invite__info-title').append($(this))
+        })
+
+
     }
 }
 
@@ -208,6 +213,9 @@ function validateForm (form, func, noreset) {
             vat: {
                 required: true
             },
+            accept: {
+                required: true,
+            }
 
         },
         messages: {
@@ -270,6 +278,9 @@ function validateForm (form, func, noreset) {
             vat: {
                 required: "This field is required",
             },
+            accept: {
+                required: "This field is required",
+            }
 
         },
         submitHandler: function () {
@@ -489,47 +500,44 @@ function showHint(modal) {
 }
 
 function initCountryCity(){
-    $(".countrySelect").select2({
-        ajax: {
-            url: "https://api.first.org/data/v1/countries",
-            dataType: 'json',
-            delay: 250,
-            data: function (params) {
-                return {
-                    q: params.term, // search term
-                };
-            },
-            processResults: function (data, params) {
-                return {
-                    results: Object.entries(data.data).map( (elem) => {
-                        return {
-                            id: elem[0],
-                            text: elem[1].country,
-                        }
-                    }),
-                };
-            },
-            cache: true
-        },
-        placeholder: 'Search for a country',
 
+
+
+    $(".countrySelect").select2();
+
+    $('.countrySelect').each(function() {
+        var $select = $(this);
+        $.ajax({
+            url: "https://restcountries.com/v3.1/all",
+            type: "GET",
+            success: function(data) {
+                // Iterate through each country and add it to the select dropdown
+                data.forEach(function(country) {
+                    $select.append('<option value="' + country.name.common + '">' + country.name.common + '</option>');
+                });
+
+                // $select.trigger('change');
+            }
+        });
     });
-    // $.ajax({
-    //     url: 'https://restcountries.com/v3.1/all',
-    //     method: 'GET',
-    //     success: function(response) {
-    //         response.forEach(function(country) {
-    //             $('#countrySelect').append($('<option>', {
-    //                 value: country.name.common.toLowerCase(), // Using country name in lowercase as value
-    //                 text: country.name.common
-    //             }));
-    //         });
-    //     },
-    //     error: function(error) {
-    //         console.error('Error fetching countries:', error);
-    //     }
-    // });
+    $('.tab__content-item:last-child .countrySelect').on('change', function() {
+        let selectedValues = $(this).val();
+        let obj = { action:'select_country', country:selectedValues };
+        console.log("Selected values: ", selectedValues);
 
+        $.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            data: obj,
+            method: 'POST',
+            success: function (res) {
+                console.log('success ajax');
+            },
+            error: function (error) {
+                console.log('error ajax');
+                $('#vat').attr('name','vat_not_req')
+            },
+        });
+    });
 };
 
 

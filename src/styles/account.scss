@@ -228,6 +228,105 @@
   }
 }
 
+.invite{
+  &__table{
+    &-flex{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap:1rem;
+      margin-bottom: 1rem;
+    }
+    &-form{
+      display: flex;
+      max-width: 20rem;
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 2rem;
+      border: 0.1rem solid #D1D7DE;
+      background: #FFF;
+      gap:1rem;
+      input{
+        background-color: transparent;
+        border: none;
+        font: 400 1.4rem / normal var(--Ubuntu);
+        &::placeholder{
+          color:#A4B0BE;
+        }
+      }
+      .img{
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+  &__info{
+    &-head{
+      display: grid;
+      grid-template-columns: 18% 18%;
+    }
+    &-item{
+      display: grid;
+      grid-template-columns: 3% 20% 74% 2%;
+      align-items: center;
+    }
+    &-img{
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 50%;
+      img{
+        border-radius: 50%;
+      }
+    }
+    &-head{
+      background: #F1F2F6;
+
+      h3{
+        color: #010101;
+        font: 500 1.4rem / normal var(--Ubuntu);
+        padding: 1.6rem 3rem;
+        text-align: center;
+        display: flex;
+        align-items: center;justify-content: center;
+        gap:0.6rem
+
+      }
+      img{
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+    &-item{
+      padding: 1.6rem 0;
+      &:not(:last-child){
+      border-bottom: 0.1rem  solid #F1F2F6;;
+     }
+    }
+    &-title{
+      display: flex;
+      flex-direction: column;
+      gap:0.2rem;
+      h3{
+        font: 400 1.4rem / normal var(--Ubuntu);
+      }
+      a{
+        font: 400 1.2rem / normal var(--Ubuntu);
+        color:#747D8C;
+      }
+    }
+    &-phone{
+      font: 400 1.4rem / normal var(--Ubuntu)!important;
+      color: #000!important;
+
+    }
+    &-remove{
+      width: 2.4rem;
+      height: 2.4rem;
+      background: url("../img/delete.svg") center/2.4rem 2.4rem no-repeat;
+
+    }
+  }
+}
 
 
 @media only screen and (max-width: 666px) {
@@ -320,4 +419,28 @@
     grid-template-columns: 5% 30% 62% 16% 6%;
   }
 
+  .invite__info-head{
+    grid-template-columns: 100%;
+    & > h3{
+      text-align: left;
+      padding: 1.6rem 1rem;
+      justify-content: flex-start;
+    }
+  }
+  .invite__info-item{
+    grid-template-columns: 12% 77% 6%
+  }
+  .invite__info-head h3:last-child{
+    display: none;
+  }
+  .invite__info-phone{
+    margin-top: 0.8rem;
+  }
 }
+@media only screen and (max-width: 374px) {
+  .invite__table-flex{
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+}
+

@@ -37,7 +37,7 @@ function passwordRecovery(){
 function addFlag(){
     let phoneInputID = "#phone";
     let input = document.querySelector(phoneInputID);
-    let iti = window.intlTelInput(input, {
+    intlTelInput(input, {
         formatOnDisplay: true,
         geoIpLookup: function(callback) {
             $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
@@ -52,9 +52,9 @@ function addFlag(){
     });
 }
 function disabledInput(){
-    $('.tab__content-item:last-child input').attr('disabled', 'disabled')
+    $('.login .tab__content-item:last-child input').attr('disabled', 'disabled')
     $(document).on('click','.tab__reg',function (){
-        $('input[name="type"]').val($(this).text())
+        $('input[name="type"]').val($(this).data('type'))
         if($('.tab__reg:first-child').hasClass('active')){
             $('.tab__content-item:last-child input').attr('disabled', 'disabled')
             $('.tab__content-item:first-child input').removeAttr('disabled','true' )
@@ -67,7 +67,7 @@ function disabledInput(){
 $(document).ready(function(){
     loginFormChange()
 
-    // addFlag()
+    addFlag()
     disabledInput();
     passwordRecovery()
 

@@ -29,12 +29,12 @@
         </form>
         <form action="" class="login__form login__registration">
           <input type="hidden" name="action" value="registration" >
-          <input type="hidden" name="type" value="customer">
+          <input type="hidden" name="type" value="person">
           <h2 class="login__title">Registration</h2>
 
           <div class="tab__header">
-            <button class="tab__header-item active tab__reg " type="button">Customer</button>
-            <button class="tab__header-item tab__reg" type="button">Company</button>
+            <button class="tab__header-item active tab__reg " type="button" data-type="person">Customer</button>
+            <button class="tab__header-item tab__reg" data-type="company" type="button">Company</button>
           </div>
           <div class="tab__content">
             <div class="tab__content-item">
@@ -53,13 +53,13 @@
                   </div>
                   <div class="login__input">
                     <label for="phone">Phone</label>
-                    <input id="phone" type="number" placeholder="Start typing..." name="phone">
+                    <input id="phone" type="tel" placeholder="Start typing..." name="phone">
                   </div>
                 <div class="login__input">
                   <label for="countrySelect12">Country</label>
-                  <select id="countrySelect12" name="country" class="countrySelect" >
+                  <select id="countrySelect12" name="country" class="countrySelect" data-placeholder="Select country...">
                     <option></option>
-                    <option value="" selected>Ukraine</option>
+                    <option value="" selected></option>
                     <option>Not select</option>
                   </select>
                 </div>
@@ -96,9 +96,9 @@
                 </div>
                 <div class="login__input">
                   <label for="countrySelect1">Country</label>
-                  <select id="countrySelect1" name="country" class="countrySelect" >
+                  <select id="countrySelect1" name="country" class="countrySelect" data-placeholder="Select country...">
                     <option></option>
-                    <option value="" selected>Ukraine</option>
+                    <option value="" selected></option>
                     <option>Not select</option>
                   </select>
                 </div>

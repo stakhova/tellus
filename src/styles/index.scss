@@ -800,7 +800,9 @@ section:not(.category){
     padding: 2rem;
     width: 100%;
   }
-
+  .select2-container--default .select2-selection--single .select2-selection__placeholder{
+    color:#A4B0BE!important;
+  }
 }
 label.error{
   position: absolute;
@@ -1189,6 +1191,10 @@ background-color: transparent;
   bottom: -4rem;
   left: -2rem;
 }
+.iti--allow-dropdown .iti__flag-container:hover .iti__selected-flag{
+  background-color: transparent;
+}
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
