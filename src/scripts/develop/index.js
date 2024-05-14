@@ -77,6 +77,36 @@ function changeMob() {
     }
 }
 
+
+function openModal(modal, func) {
+    modal.show();
+    $('body').css('overflow', 'hidden');
+
+    $('.modal__close').click(function () {
+        $(this).closest(modal).hide();
+        $('body').css('overflow', 'visible');
+        func();
+        return false;
+    });
+    $(document).keydown(function (e) {
+        if (e.keyCode === 27) {
+            e.stopPropagation();
+            modal.hide();
+            $('body').css('overflow', 'visible');
+            func();
+        }
+    });
+    modal.click(function (e) {
+        if ($(e.target).closest('.modal__content').length == 0) {
+            $(this).hide();
+            $('body').css('overflow', 'visible');
+            func();
+        }
+    });
+
+}
+
+
 function addToCart(){
 
     $('.card__buy-icon').each(function (){
@@ -112,11 +142,12 @@ function addToCart(){
                 method: 'POST',
                 success: function (res) {
                     console.log('success ajax');
-                    funcSuccess(res)
+                    $('.modal__cart .modal__overflow').html(res)
+                    openModal($('.modal__cart'))
                 },
                 error: function (error) {
                     console.log('error ajax');
-                    funcError(error)
+                    openModal($('.modal__cart'))
                 },
             });
         }
@@ -500,11 +531,6 @@ function showHint(modal) {
 }
 
 function initCountryCity(){
-
-
-
-    $(".countrySelect").select2();
-
     $('.countrySelect').each(function() {
         var $select = $(this);
         $.ajax({
@@ -538,7 +564,33 @@ function initCountryCity(){
             },
         });
     });
+    $(".countrySelect").select2();
+    // $('.login__edit .countrySelect').
 };
+function changeCount() {
+
+    function changeCountFunc() {
+        let product = $(this).closest('.cart__item');
+        let count = product.find('.cart__counter input').val();
+        let product_id = product.data('id');
+        let obj = { action: 'change_product-count', product_id, count };
+        $.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            data: obj,
+            method: 'POST',
+            success: function (res) {
+                console.log('success ajax');
+                product.find('.cart__price-full span').text(res.data.item_total)
+                $('.cart__total-price span').text(res.data.cart_total)
+            },
+            error: function (error) {
+                console.log('error ajax');
+            },
+        });
+    }
+    $(document).on('change', '.cart__counter input', changeCountFunc);
+    $(document).on('click', '.cart__counter button', changeCountFunc);
+}
 
 
 $(document).ready(function(){
@@ -575,7 +627,7 @@ $(document).ready(function(){
 
     let loginForget = $('.login__form-forget');
     validateForm(loginForget, function () {
-        ajaxSend(loginForget, '/wp-admin/admin-ajax.php', function (){
+        ajaxSend(loginForget,function (){
             $('.login__form-forget').removeClass('active');
             $('.login__form-success').addClass('active')
         }, function (){
@@ -585,7 +637,7 @@ $(document).ready(function(){
     });
     let editUser = $('.login__edit');
     validateForm(editUser, function () {
-        ajaxSend(editUser, '/wp-admin/admin-ajax.php', function (){
+        ajaxSend(editUser, function (){
 
         }, function (){
 
@@ -593,7 +645,7 @@ $(document).ready(function(){
     },1);
     let editUserCompany = $('.login__edit-company');
     validateForm(editUserCompany, function () {
-        ajaxSend(editUserCompany, '/wp-admin/admin-ajax.php', function (){
+        ajaxSend(editUserCompany,  function (){
 
         }, function (){
 
@@ -608,7 +660,7 @@ $(document).ready(function(){
 
     let passwordReset = $('.login__form-recovery');
     validateForm(passwordReset, function () {
-        ajaxSend(passwordReset, '/wp-admin/admin-ajax.php')
+        ajaxSend(passwordReset)
     });
 
 
@@ -625,6 +677,7 @@ $(document).ready(function(){
     search()
     addToCart()
     initCountryCity()
+    changeCount()
 
 
     $('.card__variants-select').each(function() {

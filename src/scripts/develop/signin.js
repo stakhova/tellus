@@ -51,23 +51,28 @@ function addFlag(){
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.14/js/utils.js"
     });
 }
-function disabledInput(){
-    $('.login .tab__content-item:last-child input').attr('disabled', 'disabled')
-    $(document).on('click','.tab__reg',function (){
-        $('input[name="type"]').val($(this).data('type'))
-        if($('.tab__reg:first-child').hasClass('active')){
-            $('.tab__content-item:last-child input').attr('disabled', 'disabled')
-            $('.tab__content-item:first-child input').removeAttr('disabled','true' )
-        } else{
-            $('.tab__content-item:first-child input').attr('disabled', 'disabled')
-            $('.tab__content-item:last-child input').removeAttr('disabled','true')
+function disabledInput() {
+    $('.login .tab__content-item:last-child input').attr('disabled', 'disabled');
+    $('.login .tab__content-item:last-child select').attr('disabled', 'disabled');
+    $(document).on('click', '.tab__reg', function () {
+        $('input[name="type"]').val($(this).data('type'));
+        if ($('.tab__reg:first-child').hasClass('active')) {
+            $('.tab__content-item:last-child input').attr('disabled', 'disabled');
+            $('.tab__content-item:first-child input').removeAttr('disabled', 'true');
+            $('.tab__content-item:last-child select').attr('disabled', 'disabled');
+            $('.tab__content-item:first-child select').removeAttr('disabled', 'true');
+        } else {
+            $('.tab__content-item:first-child input').attr('disabled', 'disabled');
+            $('.tab__content-item:last-child input').removeAttr('disabled', 'true');
+            $('.tab__content-item:first-child select').attr('disabled', 'disabled');
+            $('.tab__content-item:last-child select').removeAttr('disabled', 'true');
         }
-    })
+    });
 }
 $(document).ready(function(){
     loginFormChange()
 
-    addFlag()
+    // addFlag()
     disabledInput();
     passwordRecovery()
 

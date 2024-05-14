@@ -1,3 +1,60 @@
+function editAddress(){
+    $(document).on('click','.address__edit',function (){
+        $(this).closest('.address').hide()
+        let address = $(this).closest('.address__item');
+        let address_id = address.attr('data-address-id');
+
+        $('input[name="address_id"]').val(address_id)
+        let str = address.find('h3').text()
+        let arr = str.split(',')
+
+        console.log('arr',arr)
+
+        let country = arr.splice(1, 1)[0];
+        console.log('arr',arr)
+        console.log('country',country)
+
+        $('.address__form select option:first-child').text(country)
+        $('.address__form .login__input input').each(function (index){
+            $(this).val(arr[index]);
+        })
+
+        $('.address__form-wrap').show()
+    })
+    $(document).on('click','.address__delete', function (){
+        let address = $(this).closest('.address__item');
+        let address_id = address.attr('data-address-id');
+
+        let obj = { action: 'delete_address', address_id };
+
+        $.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            data: obj,
+            method: 'POST',
+            success: function (res) {
+                console.log('success ajax');
+                address.remove();
+            },
+            error: function (error) {
+                console.log('error ajax');
+                address.remove();
+            },
+        });
+    })
+    $(document).on('click','.address__add',function (){
+        $(this).closest('.address').hide();
+        $('.address__form-wrap').show()
+    })
+
+    $(document).on('click','.address__form-back',function (){
+        $(this).closest('.address__form-wrap').hide();
+        $('.address').css('display','flex');
+        $('input[name="address_id"]').val('')
+        $('.address__form input').val('')
+    })
+
+}
+
 function showHistory(){
     $('.history__show').click(function() {
         $(this).closest('.history__row').toggleClass('active')
@@ -17,8 +74,6 @@ function copyInvite(){
         showHint($('.modal__invite-copy'))
     })
 }
-
-
 
 
 function searchInvite() {
@@ -110,6 +165,7 @@ function removeInvite(){
         });
     })
 }
+
 function sendInvite(){
 
     const emailRegex = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,62}$/;
@@ -155,4 +211,21 @@ $(document).ready(function(){
     copyInvite()
     removeInvite();
     sortInvite()
+    editAddress()
+
+    let addressForm = $('.address__form');
+    validateForm(addressForm, function () {
+        ajaxSend(addressForm, function (res){
+            $('.address__form-wrap').hide()
+            $('.address').css('display','flex')
+            $('input[name="address_id"]').val('')
+            $('.address').append(res)
+        },function (){
+            $('.address__form-wrap').hide()
+            $('.address').css('display','flex')
+            $('input[name="address_id"]').val('')
+
+        } )
+    });
+
 })

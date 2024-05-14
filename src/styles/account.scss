@@ -59,6 +59,11 @@
   &__table{
 
   }
+  &__download{
+    width: 1.6rem;
+    height: 1.6rem;
+    margin: 0 auto;
+  }
   &__desc{
     display: none;
     &.active{
@@ -116,7 +121,7 @@
     text-align: center;
     align-items: center;
     font: 400 1.4rem / normal var(--Ubuntu) ;
-    grid-template-columns: 14% 21% 20% 21% 18% 5%;
+    grid-template-columns: 14% 18% 18% 19% 17% 10% 4%;
     &:not(:last-child){
       border-bottom: 0.1rem solid #F1F2F6;
     }
@@ -226,6 +231,29 @@
     margin-top: 2rem;
     font: 700 1.4rem / normal var(--Ubuntu);
   }
+  &__form{
+    &-back{
+      position: relative;
+      padding-left: 2.2rem;
+      color:var(--color-primary);
+      font: 500 1.4rem / normal var(--Ubuntu);
+      margin-bottom: 3rem;
+      &:after{
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 2rem;
+        height: 2rem;
+        background: url("../img/back.svg") center/2rem 2rem no-repeat;
+      }
+    }
+    &-wrap{
+      max-width: 45rem;
+      display: none;
+    }
+  }
 }
 
 .invite{
@@ -334,7 +362,7 @@
     padding: 2rem 1.4rem 2rem  ;
   }
   .history__row{
-    grid-template-columns: 20% 34% 33% 21% 15% 11%;
+    grid-template-columns: 18% 31% 32% 17% 16% 12% 13%;
   }
   .history__table{
     overflow-y: auto;

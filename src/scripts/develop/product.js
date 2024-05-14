@@ -78,18 +78,19 @@ function addProductToCart(){
     $(document).on('click','.product__add', function (){
         let product_id = $(this).closest('.product').data('id')
         let count = $('.product__counter input').val()
-        let obj = {action:'add-to-cart', product_id, count}
+        let obj = {action:'add_to_cart', product_id, count}
         $.ajax({
             url: '/wp-admin/admin-ajax.php',
             data: obj,
             method: 'POST',
             success: function (res) {
                 console.log('success ajax');
-                funcSuccess(res)
+                $('.modal__cart .modal__overflow').html(res)
+                openModal($('.modal__cart'))
             },
             error: function (error) {
                 console.log('error ajax');
-                funcError(error)
+                openModal($('.modal__cart'))
             },
         });
     })

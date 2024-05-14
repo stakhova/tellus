@@ -54,34 +54,10 @@ function applyPromo() {
     });
 }
 
-function changeCount() {
 
-    function changeCountFunc() {
-        let product = $(this).closest('.cart__item');
-        let count = product.find('.cart__counter input').val();
-        let product_id = product.data('id');
-        let obj = { action: 'change_product-count', product_id, count };
-        $.ajax({
-            url: '/wp-admin/admin-ajax.php',
-            data: obj,
-            method: 'POST',
-            success: function (res) {
-                console.log('success ajax');
-                product.find('.cart__price-full span').text(res.data.item_total)
-                $('.cart__total-price span').text(res.data.cart_total)
-            },
-            error: function (error) {
-                console.log('error ajax');
-            },
-        });
-    }
-    $(document).on('change', '.cart__counter input', changeCountFunc);
-    $(document).on('click', '.cart__counter button', changeCountFunc);
-}
 
 $(document).ready(function () {
     deleteFromCart();
-    changeCount();
     applyPromo();
 });
 //# sourceMappingURL=cart.js.map
